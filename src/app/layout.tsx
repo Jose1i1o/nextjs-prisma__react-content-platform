@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/Modal/RegisterModal";
 import ToasterProvider from "./components/micro_components/Toasters/ToasterProvider";
+import LoginModal from "./components/Modal/LoginModal";
+import getCurrentUser from "./actions/getCurrentUser";
 
 export const metadata: Metadata = {
 	title: "AIT Documentation",
@@ -15,18 +17,20 @@ const font = Nunito({
 	subsets: ["latin"],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
+	const currentUser = await getCurrentUser();
 	return (
 		<html lang="en">
 			<body className={font.className}>
 				<ClientOnly>
 					<ToasterProvider />
 					<RegisterModal />
-					<Navbar />
+					<LoginModal />
+					<Navbar currentUser={currentUser}/>
 					{children}
 				</ClientOnly>
 			</body>

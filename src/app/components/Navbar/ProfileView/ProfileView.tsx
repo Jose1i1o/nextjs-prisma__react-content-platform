@@ -1,16 +1,22 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { FC, useCallback } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar/Avatar";
 import MenuItem from "../MenuItem/MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import { User } from "@prisma/client";
+import { signOut } from "next-auth/react";
 
-type Props = {};
+type ProfileViewProps = {
+	currentUser?: User | null;
+};
 
-const ProfileView = (props: Props) => {
+const ProfileView: FC<ProfileViewProps> = ({ currentUser }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const registerModal = useRegisterModal();
+	const LoginModal = useLoginModal();
 
 	const toogleOpenMenu = useCallback(() => {
 		setIsOpen((isOpen) => !isOpen);
@@ -19,14 +25,11 @@ const ProfileView = (props: Props) => {
 	return (
 		<section className="relative">
 			<div className="flex flex-row items-center gap-3">
-				<div
-					onClick={toogleOpenMenu}
-					className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
-				>
-					Settings
+				<div className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full  transition cursor-pointer">
+					Tu cuenta AIT
 				</div>
 				<div
-					onClick={() => {}}
+					onClick={toogleOpenMenu}
 					className="p-4 md:py-1 md:px-2 flex flex-row items-center gap-3 rounded-full transition cursor-pointer"
 				>
 					<AiOutlineMenu size={20} />
@@ -38,10 +41,19 @@ const ProfileView = (props: Props) => {
 			{isOpen && (
 				<div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-10 top-12 text-sm">
 					<div className="flex flex-col cursor-pointer">
-						<>
-							<MenuItem onClick={registerModal.onOpen} label="Login" />
-							<MenuItem onClick={() => {}} label="Account" />
-						</>
+						{currentUser ? (
+							<>
+								<MenuItem onClick={() => {}} label="My profile" />
+								<MenuItem onClick={() => {}} label="My favourites" />
+								<hr />
+								<MenuItem onClick={() => signOut()} label="Logout" />
+							</>
+						) : (
+							<>
+								<MenuItem onClick={LoginModal.onOpen} label="Login" />
+								<MenuItem onClick={registerModal.onOpen} label="Register" />
+							</>
+						)}
 					</div>
 				</div>
 			)}
