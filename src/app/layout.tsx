@@ -2,6 +2,9 @@ import { Nunito } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
+import ClientOnly from "./components/ClientOnly";
+import RegisterModal from "./components/Modal/RegisterModal";
+import ToasterProvider from "./components/micro_components/Toasters/ToasterProvider";
 
 export const metadata: Metadata = {
 	title: "AIT Documentation",
@@ -20,8 +23,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={font.className}>
-				<Navbar />
-				{children}
+				<ClientOnly>
+					<ToasterProvider />
+					<RegisterModal />
+					<Navbar />
+					{children}
+				</ClientOnly>
 			</body>
 		</html>
 	);

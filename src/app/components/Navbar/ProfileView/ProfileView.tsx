@@ -4,11 +4,13 @@ import React, { useCallback } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar/Avatar";
 import MenuItem from "../MenuItem/MenuItem";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 type Props = {};
 
 const ProfileView = (props: Props) => {
 	const [isOpen, setIsOpen] = React.useState(false);
+	const registerModal = useRegisterModal();
 
 	const toogleOpenMenu = useCallback(() => {
 		setIsOpen((isOpen) => !isOpen);
@@ -37,7 +39,7 @@ const ProfileView = (props: Props) => {
 				<div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-10 top-12 text-sm">
 					<div className="flex flex-col cursor-pointer">
 						<>
-							<MenuItem onClick={() => {}} label="Login" />
+							<MenuItem onClick={registerModal.onOpen} label="Login" />
 							<MenuItem onClick={() => {}} label="Account" />
 						</>
 					</div>
