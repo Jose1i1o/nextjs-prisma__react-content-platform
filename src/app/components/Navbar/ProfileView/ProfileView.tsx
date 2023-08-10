@@ -34,7 +34,7 @@ const ProfileView: FC<ProfileViewProps> = ({ currentUser }) => {
 				>
 					<AiOutlineMenu size={20} />
 					<div className="hidden md:block">
-						<Avatar src={currentUser?.image } />
+						<Avatar />
 					</div>
 				</div>
 			</div>
