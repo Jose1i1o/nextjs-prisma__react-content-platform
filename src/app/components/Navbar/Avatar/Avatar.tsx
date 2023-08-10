@@ -13,7 +13,7 @@ const Avatar: FC<AvatarProps> = ({ src }) => {
 			className="rounded-full"
 			height={40}
 			width={40}
-			src={src || "/avatar.jpeg"}
+			src={src || "/images/avatar.jpeg"}
 			alt="Avatar"
 		/>
 	);

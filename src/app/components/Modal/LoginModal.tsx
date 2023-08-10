@@ -2,7 +2,7 @@
 
 import { signIn } from "next-auth/react";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, set, useForm } from "react-hook-form";
@@ -52,6 +52,12 @@ const LoginModal = () => {
 			}
 		});
 	};
+
+	const toogle = useCallback(() => {
+		loginModal.onClose();
+		registerModal.onOpen();
+	}, [loginModal, registerModal]);
+
 	const bodyContent = (
 		<div className="flex flex-col gap-4">
 			<Heading
@@ -102,9 +108,9 @@ const LoginModal = () => {
         "
 			>
 				<p>
-					Don't have an account yet?
+					First time using AIT docs,
 					<span
-						onClick={registerModal.onClose}
+						onClick={toogle}
 						className="
               text-neutral-800
               cursor-pointer 
@@ -112,7 +118,7 @@ const LoginModal = () => {
             "
 					>
 						{" "}
-						Register here
+						<u>register here</u>
 					</span>
 				</p>
 			</div>

@@ -44,6 +44,11 @@ const RegisterModal = () => {
 		[registerModal]
 	);
 
+	const toogle = useCallback(() => {
+		registerModal.onClose();
+		registerModal.onOpen();
+	}, [registerModal, registerModal]);
+
 	const bodyContent = (
 		<div className="flex flex-col gap-4">
 			<Heading
@@ -104,7 +109,7 @@ const RegisterModal = () => {
 				<p>
 					Already have an account?
 					<span
-						onClick={registerModal.onClose}
+						onClick={toogle}
 						className="
               text-neutral-800
               cursor-pointer 
