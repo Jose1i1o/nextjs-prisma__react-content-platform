@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { FC } from "react";
 import Heading from "../../Heading/Heading";
-import Button from "../Button/Button";
+import Button from "../../micro_components/Button/Button";
 
 type EmptyStateProps = {
 	title?: string;
@@ -20,7 +20,6 @@ const EmptyState: FC<EmptyStateProps> = ({
 	return (
 		<div
 			className="
-        h-[100vh]
         flex 
         flex-col 
         gap-2 

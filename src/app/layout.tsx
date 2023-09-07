@@ -7,6 +7,7 @@ import RegisterModal from "./components/Modal/RegisterModal";
 import ToasterProvider from "./components/micro_components/Toasters/ToasterProvider";
 import LoginModal from "./components/Modal/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
 	title: "AIT Documentation",
@@ -26,12 +27,14 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body className={font.className}>
-				<ClientOnly>
-					<ToasterProvider />
-					<RegisterModal />
-					<LoginModal />
-					<Navbar currentUser={currentUser} />
-				</ClientOnly>
+				<Providers>
+					<ClientOnly>
+						<ToasterProvider />
+						<RegisterModal />
+						<LoginModal />
+						<Navbar currentUser={currentUser} />
+					</ClientOnly>
+				</Providers>
 				<div className="mt-5 pt-5">{children}</div>
 			</body>
 		</html>
