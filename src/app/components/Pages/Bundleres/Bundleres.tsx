@@ -9,40 +9,45 @@ type Props = {};
 const Bundleres: FC = (props: Props) => {
 	return (
 		<div className="p-4">
-			<h1 className="text-2xl font-bold mb-4">
-				1. Understanding JavaScript Bundlers and Frameworks
-			</h1>
-			<p className="text-gray-700">
-				<strong>Main Advantages of Using a Web Bundler:</strong>
-			</p>
-			<ul className="list-disc pl-6 my-2">
-				<li className="text-gray-700">
-					<strong>📦 Code Organization:</strong> Web bundlers help organize your
-					code into manageable modules and dependencies, making it easier to
-					maintain and scale your project.
-				</li>
-				<li className="text-gray-700">
-					<strong>🚀 Optimized Loading:</strong> Bundlers optimize your code for
-					production by reducing file sizes, which results in faster loading
-					times for your web applications.
-				</li>
-				<li className="text-gray-700">
-					<strong>📚 Dependency Management:</strong> Bundlers handle the
-					management of dependencies and ensure that your application loads only
-					the necessary code, reducing redundancy.
-				</li>
-				<li className="text-gray-700">
-					<strong>🌳 Tree-Shaking:</strong> Bundlers like Rollup can perform
-					tree-shaking, eliminating dead code and unused modules from the final
-					bundle, further reducing its size.
-				</li>
-				<li className="text-gray-700">
-					<strong>🖼️ Asset Management:</strong> Bundlers can handle various
-					asset types, including styles, images, and fonts, making it easier to
-					include them in your project.
-				</li>
-			</ul>
-			<Accordion variant="splitted" className="my-2">
+			<Accordion variant="splitted" className="my-2" selectionMode="multiple">
+				<AccordionItem
+					key={0}
+					aria-label="Understanding JavaScript Bundlers and Frameworks"
+					title="0. Understanding JavaScript Bundlers and Frameworks"
+				>
+					<div className="content p-4">
+						<h3 className="text-gray-700">
+							<strong>Main Advantages of Using a Web Bundler:</strong>
+						</h3>
+						<ul className="list-disc pl-6 my-2">
+							<li className="text-gray-700">
+								<strong>📦 Code Organization:</strong> Web bundlers help
+								organize your code into manageable modules and dependencies,
+								making it easier to maintain and scale your project.
+							</li>
+							<li className="text-gray-700">
+								<strong>🚀 Optimized Loading:</strong> Bundlers optimize your
+								code for production by reducing file sizes, which results in
+								faster loading times for your web applications.
+							</li>
+							<li className="text-gray-700">
+								<strong>📚 Dependency Management:</strong> Bundlers handle the
+								management of dependencies and ensure that your application
+								loads only the necessary code, reducing redundancy.
+							</li>
+							<li className="text-gray-700">
+								<strong>🌳 Tree-Shaking:</strong> Bundlers like Rollup can
+								perform tree-shaking, eliminating dead code and unused modules
+								from the final bundle, further reducing its size.
+							</li>
+							<li className="text-gray-700">
+								<strong>🖼️ Asset Management:</strong> Bundlers can handle
+								various asset types, including styles, images, and fonts, making
+								it easier to include them in your project.
+							</li>
+						</ul>
+					</div>
+				</AccordionItem>
 				<AccordionItem key={1} aria-label="Webpack" title="1. Webpack">
 					<>
 						<div className="content p-4">
@@ -133,7 +138,7 @@ const Bundleres: FC = (props: Props) => {
 
 							<p className="text-gray-700">
 								Learn more about Webpack at{" "}
-								<a className="text-blue-600" href="https://webpack.js.org/">
+								<a className="text_link" href="https://webpack.js.org/">
 									https://webpack.js.org
 								</a>
 								.
@@ -143,7 +148,7 @@ const Bundleres: FC = (props: Props) => {
 				</AccordionItem>
 				<AccordionItem key={2} aria-label="Vite" title="2. Vite">
 					<>
-						<div className="content">
+						<div className="content p-4">
 							<p className="text-gray-700">
 								2.1. Vite is a newer and faster alternative to webpack. It
 								leverages ES modules for rapid development and has gained
@@ -205,7 +210,7 @@ const Bundleres: FC = (props: Props) => {
 							</p>
 							<p className="text-gray-700">
 								Learn more about Vite at{" "}
-								<a className="text-blue-600" href="https://vitejs.dev/">
+								<a className="text_link" href="https://vitejs.dev/">
 									https://vitejs.dev
 								</a>
 								.
@@ -218,7 +223,7 @@ const Bundleres: FC = (props: Props) => {
 					aria-label="Other Bundlers and Frameworks"
 					title="3. Other Bundlers and Frameworks"
 				>
-					<div className="content">
+					<div className="content p-4">
 						<p className="text-gray-700 mb-4">
 							3.1. There are other bundlers like Rollup, Snowpack, Gulp,
 							ESBuild, and Bun. Each has its own strengths and use cases, so you
@@ -226,8 +231,13 @@ const Bundleres: FC = (props: Props) => {
 							looking for more efficient frameworks for building web
 							applications, consider:
 						</p>
-						<Accordion variant="light" selectionMode="multiple">
-							<AccordionItem key={5} aria-label="Rollup" title="Rollup">
+						<Accordion selectionMode="multiple" variant="splitted">
+							<AccordionItem
+								key={5}
+								aria-label="Rollup"
+								title="Rollup"
+								className="my-2"
+							>
 								<>
 									<p className="text-gray-700">
 										<strong>3.1.1. Rollup:</strong> Rollup is a module bundler
@@ -255,7 +265,7 @@ const Bundleres: FC = (props: Props) => {
 										<p className="text-gray-700">
 											Learn more about Rollup at{" "}
 											<a
-												className="text-blue-600"
+												className="text_link"
 												href="https://rollupjs.org/"
 												target="_blank"
 												rel="noopener noreferrer"
@@ -266,7 +276,12 @@ const Bundleres: FC = (props: Props) => {
 									</p>
 								</>
 							</AccordionItem>
-							<AccordionItem key={6} aria-label="Snowpack" title="Snowpack">
+							<AccordionItem
+								key={6}
+								aria-label="Snowpack"
+								title="Snowpack"
+								className="my-2"
+							>
 								<>
 									<p className="text-gray-700">
 										<strong>3.1.2. Snowpack:</strong> Snowpack is a modern
@@ -294,7 +309,7 @@ const Bundleres: FC = (props: Props) => {
 										<p className="text-gray-700">
 											Learn more about Snowpack at{" "}
 											<a
-												className="text-blue-600"
+												className="text_link"
 												href="https://www.snowpack.dev/"
 												target="_blank"
 												rel="noopener noreferrer"
@@ -305,7 +320,12 @@ const Bundleres: FC = (props: Props) => {
 									</p>
 								</>
 							</AccordionItem>
-							<AccordionItem key={7} aria-label="Gulp" title="Gulp">
+							<AccordionItem
+								key={7}
+								aria-label="Gulp"
+								title="Gulp"
+								className="my-2"
+							>
 								<>
 									<p className="text-gray-700">
 										<strong>3.1.3. Gulp:</strong> Gulp is a task runner that
@@ -332,7 +352,7 @@ const Bundleres: FC = (props: Props) => {
 										<p className="text-gray-700">
 											Learn more about Gulp at{" "}
 											<a
-												className="text-blue-600"
+												className="text_link"
 												href="https://gulpjs.com/"
 												target="_blank"
 												rel="noopener noreferrer"
@@ -343,7 +363,12 @@ const Bundleres: FC = (props: Props) => {
 									</p>
 								</>
 							</AccordionItem>
-							<AccordionItem key={8} aria-label="ESBuild" title="ESBuild">
+							<AccordionItem
+								key={8}
+								aria-label="ESBuild"
+								title="ESBuild"
+								className="my-2"
+							>
 								<>
 									<p className="text-gray-700">
 										<strong>3.1.4. ESBuild:</strong> ESBuild is an extremely
@@ -371,7 +396,7 @@ const Bundleres: FC = (props: Props) => {
 										<p className="text-gray-700">
 											Learn more about ESBuild at{" "}
 											<a
-												className="text-blue-600"
+												className="text_link"
 												href="https://esbuild.github.io/"
 												target="_blank"
 												rel="noopener noreferrer"
@@ -382,7 +407,12 @@ const Bundleres: FC = (props: Props) => {
 									</p>
 								</>
 							</AccordionItem>
-							<AccordionItem key={9} aria-label="Bun" title="Bun">
+							<AccordionItem
+								key={9}
+								aria-label="Bun"
+								title="Bun"
+								className="my-2"
+							>
 								<>
 									<p className="text-gray-700">
 										<strong>3.1.5. Bun:</strong> Bun is a zero-config bundler
@@ -407,9 +437,9 @@ const Bundleres: FC = (props: Props) => {
 											</div>
 										</div>
 										<p className="text-gray-700">
-											Learn more about Bun at
+											Learn more about Bun at{" "}
 											<a
-												className="text-blue-600"
+												className="text_link"
 												href="https://bunjs.dev/"
 												target="_blank"
 												rel="noopener noreferrer"
@@ -434,198 +464,400 @@ const Bundleres: FC = (props: Props) => {
 					title="4. Other Frameworks"
 				>
 					<>
-						<div>
-							If you are looking for more efficient frameworks for building web
-							applications, consider:
-						</div>
-						<div>
-							<ul className="list-disc pl-6 my-2">
-								<li>
-									<p className="text-gray-700">
-										<strong>4.1. Next.js:</strong> Offers server-side rendering,
-										automatic code splitting, and routing, making it efficient
-										for SEO and performance.
-									</p>
-									<div className="p-2 my-2 bg-gray-200 rounded-md">
-										<div className="my-2">
-											<BsTerminal
-												size={25}
-												className="inline-block mr-2 mb-2"
-											/>
-											<span className="text-gray-700 font-bold">Terminal</span>
-											<pre className="bg-gray-800 text-white">
-												<code className="block p-2 highlighted-text">
-													npx create-next-app
-												</code>
-											</pre>
-										</div>
-									</div>
-								</li>
-								<li>
-									<p className="text-gray-700">
-										<strong>4.2. Remix:</strong> A modern framework focusing on
-										server-rendered React applications with an emphasis on fast
-										navigation and developer experience.
-									</p>
-									<div className="p-2 my-2 bg-gray-200 rounded-md">
-										<div className="my-2">
-											<BsTerminal
-												size={25}
-												className="inline-block mr-2 mb-2"
-											/>
-											<span className="text-gray-700 font-bold">Terminal</span>
-											<pre className="bg-gray-800 text-white">
-												<code className="block p-2 highlighted-text">
-													npx create-remix
-												</code>
-											</pre>
-										</div>
-									</div>
-								</li>
-								<li>
-									<p className="text-gray-700">
-										<strong>4.3. Gatsby:</strong> Known for building
-										blazing-fast websites with pre-rendering, image
-										optimization, and content sourcing from various data
-										sources.
-									</p>
-									<div className="p-2 my-2 bg-gray-200 rounded-md">
-										<div className="my-2">
-											<BsTerminal
-												size={25}
-												className="inline-block mr-2 mb-2"
-											/>
-											<span className="text-gray-700 font-bold">Terminal</span>
-											<pre className="bg-gray-800 text-white">
-												<code className="block p-2 highlighted-text">
-													npx create-gatsby
-												</code>
-											</pre>
-										</div>
-									</div>
-								</li>
-								<li>
-									<p className="text-gray-700">
-										<strong>4.4. Expo:</strong> is a React framework that lets
-										you create universal Android, iOS, and web apps with truly
-										native UIs.
-									</p>
-									<div className="p-2 my-2 bg-gray-200 rounded-md">
-										<div className="my-2">
-											<BsTerminal
-												size={25}
-												className="inline-block mr-2 mb-2"
-											/>
-											<span className="text-gray-700 font-bold">Terminal</span>
-											<pre className="bg-gray-800 text-white">
-												<code className="block p-2 highlighted-text">
-													npx create-expo-app
-												</code>
-											</pre>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<p className="text-gray-700">
-								Each of these frameworks has its own strengths and can be chosen
-								based on the specific requirements of your project.
+						<div className="content p-4">
+							<p>
+								If you are looking for more efficient frameworks for building
+								web applications, consider:
 							</p>
+							<div>
+								<ul className="list-disc pl-6 my-2">
+									<li>
+										<p className="text-gray-700">
+											<strong>4.1. Next.js:</strong> Offers server-side
+											rendering, automatic code splitting, and routing, making
+											it efficient for SEO and performance.
+										</p>
+										<p className="text-gray-700">
+											Learn more about Next.js at{" "}
+											<a
+												className="text_link"
+												href="https://nextjs.org/"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												Bun Website
+											</a>
+										</p>
+										<div className="p-2 my-2 bg-gray-200 rounded-md">
+											<div className="my-2">
+												<BsTerminal
+													size={25}
+													className="inline-block mr-2 mb-2"
+												/>
+												<span className="text-gray-700 font-bold">
+													Terminal
+												</span>
+												<pre className="bg-gray-800 text-white">
+													<code className="block p-2 highlighted-text">
+														npx create-next-app
+													</code>
+												</pre>
+											</div>
+										</div>
+									</li>
+									<li>
+										<p className="text-gray-700">
+											<strong>4.2. Remix:</strong> A modern framework focusing
+											on server-rendered React applications with an emphasis on
+											fast navigation and developer experience.
+										</p>
+										<p className="text-gray-700">
+											Learn more about Bun at{" "}
+											<a
+												className="text_link"
+												href="https://remix.run/"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												Bun Website
+											</a>
+										</p>
+										<div className="p-2 my-2 bg-gray-200 rounded-md">
+											<div className="my-2">
+												<BsTerminal
+													size={25}
+													className="inline-block mr-2 mb-2"
+												/>
+												<span className="text-gray-700 font-bold">
+													Terminal
+												</span>
+												<pre className="bg-gray-800 text-white">
+													<code className="block p-2 highlighted-text">
+														npx create-remix
+													</code>
+												</pre>
+											</div>
+										</div>
+									</li>
+									<li>
+										<p className="text-gray-700">
+											<strong>4.3. Gatsby:</strong> Known for building
+											blazing-fast websites with pre-rendering, image
+											optimization, and content sourcing from various data
+											sources.
+										</p>
+										<p className="text-gray-700">
+											Learn more about Bun at{" "}
+											<a
+												className="text_link"
+												href="https://www.gatsbyjs.com/"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												Gatsby Website
+											</a>
+										</p>
+										<div className="p-2 my-2 bg-gray-200 rounded-md">
+											<div className="my-2">
+												<BsTerminal
+													size={25}
+													className="inline-block mr-2 mb-2"
+												/>
+												<span className="text-gray-700 font-bold">
+													Terminal
+												</span>
+												<pre className="bg-gray-800 text-white">
+													<code className="block p-2 highlighted-text">
+														npx create-gatsby
+													</code>
+												</pre>
+											</div>
+										</div>
+									</li>
+									<li>
+										<p className="text-gray-700">
+											<strong>4.4. Expo:</strong> is a React framework that lets
+											you create universal Android, iOS, and web apps with truly
+											native UIs.
+										</p>
+										<p className="text-gray-700">
+											Learn more about Expo at{" "}
+											<a
+												className="text_link"
+												href="https://expo.dev/"
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												Expo Website
+											</a>
+										</p>
+										<div className="p-2 my-2 bg-gray-200 rounded-md">
+											<div className="my-2">
+												<BsTerminal
+													size={25}
+													className="inline-block mr-2 mb-2"
+												/>
+												<span className="text-gray-700 font-bold">
+													Terminal
+												</span>
+												<pre className="bg-gray-800 text-white">
+													<code className="block p-2 highlighted-text">
+														npx create-expo-app
+													</code>
+												</pre>
+											</div>
+										</div>
+									</li>
+								</ul>
+								<p className="text-gray-700">
+									Each of these frameworks has its own strengths and can be
+									chosen based on the specific requirements of your project.
+								</p>
+							</div>
 						</div>
 					</>
 				</AccordionItem>
 				<AccordionItem
 					key={10}
 					aria-label="NPM and Dependency Management"
-					title="4. NPM and Dependency Management"
+					title="5. NPM and Dependency Management"
 				>
-					<p className="text-gray-700">
-						NPM (Node Package Manager) is a tool that manages dependencies for
-						both client and backend projects. It simplifies the installation of
-						necessary project dependencies, which are code packages created by
-						others to accelerate development.
-					</p>
-					<p className="text-gray-700">
-						Before dependency managers like NPM, JavaScript was primarily used
-						for implementing widgets and interface elements. Managing
-						dependencies required manual downloading, importing, and dealing
-						with browser compatibility issues, as each dependency became global,
-						impacting performance.
-					</p>
-					<p className="text-gray-700">
-						Nowadays, NPM saves data as .tar files in the npm cache folder,
-						ensuring reliability and efficiency. Dependency updates are
-						simplified, and corrupted data is manually removed.
-					</p>
-					<p className="text-gray-700">
-						The rise of frameworks like Angular, Backbone, and Ember in 2010
-						introduced the concept of Single Page Applications (SPAs), which
-						changed the way web development was done. SPAs limited server
-						communication to when necessary, improving security by limiting
-						web-crawler access.
-					</p>
-					<p className="text-gray-700">
-						Dependency managers like NPM also handle dependencies that rely on
-						other dependencies, improving maintainability and avoiding conflicts
-						between versions.
-					</p>
-					<p className="text-gray-700">
-						Dependency managers coordinate and centralize library integration,
-						ensuring your project's sustainability by allowing easy importing of
-						new dependencies or updating existing ones.
-					</p>
-					<p className="text-gray-700">How NPM Works:</p>
-					<ol className="list-decimal pl-6 my-2">
-						<li className="text-gray-700">NPM reads the package.json file.</li>
-						<li className="text-gray-700">
-							Orders dependencies alphabetically.
-						</li>
-						<li className="text-gray-700">
-							Checks if any dependencies have already been installed.
-						</li>
-						<li className="text-gray-700">
-							Downloads metadata for all required dependencies.
-						</li>
-						<li className="text-gray-700">
-							Determines the best match (latest possible version) and downloads
-							the tarball for each dependency.
-						</li>
-						<li className="text-gray-700">
-							Once downloaded and unpacked, it checks dependencies recursively.
-						</li>
-						<li className="text-gray-700">
-							If there are no more dependencies, it continues.
-						</li>
-						<li className="text-gray-700">
-							Checks for install scripts and runs them if they exist.
-						</li>
-						<li className="text-gray-700">Module has been installed.</li>
-					</ol>
-					<p className="text-gray-700">
-						NPM also follows semantic versioning with major, minor, patch,
-						pre-release, and build versions of packages. The package.json and
-						package-lock.json files help manage dependencies.
-					</p>
-					<p className="text-gray-700">Types of Dependencies:</p>
-					<ul className="list-disc pl-6 my-2">
-						<li className="text-gray-700">
-							<strong>Production Dependencies:</strong> These are mandatory for
-							running the project.
-						</li>
-						<li className="text-gray-700">
-							<strong>Development Dependencies:</strong> Needed during
-							development but not required for the application to run.
-						</li>
-						<li className="text-gray-700">
-							<strong>Global Dependencies:</strong> Required by the operating
-							system for tools like nodemon.
-						</li>
-					</ul>
-					<p className="text-gray-700">
-						Alternatives to NPM also exist for dependency management.
-					</p>
+					<Accordion selectionMode="multiple" variant="splitted">
+						<AccordionItem
+							key={5.1}
+							aria-label="What is NPM?"
+							title="What is NPM?"
+							className="my-2"
+						>
+							<div className="content p-4">
+								<p className="text-gray-700 pb-4">
+									NPM (Node Package Manager) is a tool that manages dependencies
+									for both client and backend projects. It simplifies the
+									installation of necessary project dependencies, which are code
+									packages created by others to accelerate development.
+								</p>
+								<p className="text-gray-700 pb-4">
+									Before dependency managers like NPM, JavaScript was primarily
+									used for implementing widgets and interface elements. Managing
+									dependencies required manual downloading, importing, and
+									dealing with browser compatibility issues, as each dependency
+									became global, impacting performance.
+								</p>
+								<p className="text-gray-700 pb-4">
+									Nowadays, NPM saves data as .tar files in the npm cache
+									folder, ensuring reliability and efficiency. Dependency
+									updates are simplified, and corrupted data is manually
+									removed.
+								</p>
+								<p className="text-gray-700 pb-4">
+									The rise of frameworks like Angular, Backbone, and Ember in
+									2010 introduced the concept of Single Page Applications
+									(SPAs), which changed the way web development was done. SPAs
+									limited server communication to when necessary, improving
+									security by limiting web-crawler access.
+								</p>
+								<p className="text-gray-700 pb-4">
+									Dependency managers like NPM also handle dependencies that
+									rely on other dependencies, improving maintainability and
+									avoiding conflicts between versions.
+								</p>
+								<figure className="flex flex-col items-center p-4">
+									<img
+										src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_550/v1/react_page/ms0vfpebriiszmlf7ql0"
+										alt="Package Dependency Graph"
+										className="h-25 w-50 mx-auto"
+									/>
+									<figcaption className="text-center text-gray-700 pb-2">
+										Image: Package Dependency Graph
+									</figcaption>
+								</figure>
+							</div>
+						</AccordionItem>
+						<AccordionItem
+							key={5.2}
+							aria-label="How do dependy managers work?"
+							title="How do dependy managers work?"
+							className="my-2"
+						>
+							<p className="text-gray-700 pb-4">
+								Dependency managers coordinate and centralize library
+								integration, ensuring your project's sustainability by allowing
+								easy importing of new dependencies or updating existing ones.
+							</p>
+							<p className="text-gray-700 pb-4">How NPM Works:</p>
+							<ol className="list-decimal pl-6 my-2">
+								<li className="text-gray-700">
+									NPM reads the package.json file.
+								</li>
+								<li className="text-gray-700">
+									Orders dependencies alphabetically.
+								</li>
+								<li className="text-gray-700">
+									Checks if any dependencies have already been installed.
+								</li>
+								<li className="text-gray-700">
+									Downloads metadata for all required dependencies.
+								</li>
+								<figure className="flex flex-col items-center p-4">
+									<img
+										src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_550/v1/react_page/cnbpiqpdd6byvc40pfdl"
+										alt="Metadata download process"
+										className="h-25 w-50 mx-auto"
+									/>
+									<figcaption className="text-center text-gray-700 pb-2">
+										Image: Metadata download process
+									</figcaption>
+								</figure>
+								<li className="text-gray-700">
+									Determines the best match (latest possible version) and
+									downloads the tarball for each dependency.
+								</li>
+								<li className="text-gray-700">
+									Once downloaded and unpacked, it checks dependencies
+									recursively.
+								</li>
+								<li className="text-gray-700">
+									If there are no more dependencies, it continues.
+								</li>
+								<li className="text-gray-700">
+									Checks for install scripts and runs them if they exist.
+								</li>
+								<li className="text-gray-700">Module has been installed.</li>
+							</ol>
+							<p className="text-gray-700 pb-4">
+								NPM also follows semantic versioning with major, minor, patch,
+								pre-release, and build versions of packages. The package.json
+								and package-lock.json files help manage dependencies.
+							</p>
+							<figure className="flex flex-col items-center p-4">
+								<img
+									src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_250/v1/react_page/mnig3bnafljfupjech09"
+									alt="Webpack Dependency Graph"
+									className="h-25 w-50 mx-auto"
+								/>
+								<figcaption className="text-center text-gray-700 pb-2">
+									Image: Semantic versioning of packages
+								</figcaption>
+							</figure>
+							<p className="text-gray-700 pb-4">Types of Dependencies:</p>
+							<ul className="list-disc pl-6 my-2">
+								<li className="text-gray-700">
+									<strong>Production Dependencies:</strong> These are mandatory
+									for running the project.
+								</li>
+								<li className="text-gray-700">
+									<strong>Development Dependencies:</strong> Needed during
+									development but not required for the application to run.
+								</li>
+								<li className="text-gray-700">
+									<strong>Global Dependencies:</strong> Required by the
+									operating system for tools like nodemon.
+								</li>
+							</ul>
+						</AccordionItem>
+						<AccordionItem
+							key={5.3}
+							aria-label="Alternatives to NPM"
+							title="Alternatives to NPM"
+							className="my-2"
+						>
+							<p className="text-gray-700 pb-4">
+								Alternatives to NPM also exist for dependency management, such
+								as yarn and pnpm.
+							</p>
+							<div className="flex align-left">
+								<img
+									src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_150/v1/react_page/smyfxmvwjpmnh49ugul8"
+									alt="Metadata download process"
+								/>
+								<img
+									src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_100/v1/react_page/ad3xqed08h9vxszkwthf"
+									alt="Metadata download process"
+									className="m-5"
+								/>
+							</div>
+						</AccordionItem>
+						<AccordionItem
+							className="text-gray-700"
+							key={5.4}
+							aria-label="Web bundling is important for performance"
+							title="Web bundling is important for performance"
+						>
+							<h2 className="pb-4">
+								We can use some webs to check the size of our
+								libraries/frameworks before we even make use of them.
+							</h2>
+
+							<p className="pb-4">
+								BundlePhobia and PackagePhobia are two valuable web tools that
+								have become essential for developers in the world of JavaScript
+								and package management. These platforms provide crucial insights
+								into the size and impact of JavaScript packages, helping
+								developers make informed decisions when selecting and including
+								dependencies in their projects.
+							</p>
+							<h3 className="text-gray-700 pb-4">
+								<strong>BundlePhobia:</strong>
+							</h3>
+							<p className="pb-4">
+								BundlePhobia offers a comprehensive analysis of JavaScript
+								packages, focusing on their bundled size. It calculates the size
+								of a package when bundled with all its dependencies.
+								BundlePhobia allows users to search for packages, view detailed
+								information, and assess potential alternatives that might be
+								more lightweight. By offering insights into download statistics,
+								gzip and minified sizes, and version comparisons, BundlePhobia
+								empowers developers to choose packages that align with their
+								project's requirements and constraints.
+							</p>
+							<p className="text-gray-700 pb-4">
+								Learn more about this at{" "}
+								<a
+									className="text_link"
+									href="https://bundlephobia.com/package/moment@2.29.4"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									BundlePhobia Website
+								</a>
+							</p>
+							<h3 className="text-gray-700 pb-4">
+								<strong>PackagePhobia:</strong>
+							</h3>
+							<p className="pb-4">
+								On the other hand, PackagePhobia takes a broader view of
+								packages by evaluating their overall impact on a project. It not
+								only considers the package size but also calculates the
+								potential increase in the total size of a project when the
+								package is added as a dependency. This holistic approach helps
+								developers make well-informed decisions, especially when
+								considering the cumulative effect of multiple dependencies.
+							</p>
+							<p className="text-gray-700 pb-4">
+								Learn more about this at{" "}
+								<a
+									className="text_link"
+									href="https://packagephobia.com/result?p=moment"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									PackagePhobia Website
+								</a>
+							</p>
+
+							<p className="pb-4 font-bold">
+								In an ecosystem where every kilobyte matters, BundlePhobia and
+								PackagePhobia have become indispensable tools for JavaScript
+								developers. They promote best practices in package selection and
+								usage, ultimately contributing to the creation of faster, more
+								optimized, and efficient web applications.
+							</p>
+						</AccordionItem>
+					</Accordion>
 				</AccordionItem>
 			</Accordion>
 		</div>
 	);
 };
+
 export default Bundleres;

@@ -1,13 +1,11 @@
 "use client";
 
-import React, { FC } from 'react'
+import React, { FC } from "react";
 
-type Props = {}
+type Props = {};
 
-const Intro:FC = (props: Props) => {
-  return (
-    <div>Intro</div>
-  )
-}
+const Intro: FC = (props: Props) => {
+	return <div>Intro</div>;
+};
 
-export default Intro
+export default Intro;

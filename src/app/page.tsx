@@ -30,7 +30,7 @@ export default function Home() {
 	let componentToRender;
 
 	switch (category) {
-		case "Bundleres":
+		case "Bundlers":
 			componentToRender = <Bundleres />;
 			break;
 		case "Intro":
