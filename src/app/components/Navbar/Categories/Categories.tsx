@@ -16,7 +16,6 @@ import {
 } from "react-icons/gi";
 import { IoDiamond } from "react-icons/io5";
 import { MdOutlineElectricBike, MdOutlineSailing } from "react-icons/md";
-import { PiTrainThin } from "react-icons/pi";
 import { SiStyledcomponents, SiRollupdotjs, SiFerrari } from "react-icons/si";
 
 import CategoryBox from "./CategoryBox";

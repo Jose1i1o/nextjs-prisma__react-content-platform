@@ -25,7 +25,6 @@ export default function Home() {
 
 	const params = useSearchParams();
 	const category = params?.get("category");
-	console.log(typeof category);
 
 	let componentToRender;
 
@@ -86,7 +85,7 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		console.log("category", category);
+		// console.log("category", category);
 	}, [category]);
 
 	return (
