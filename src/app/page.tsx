@@ -12,13 +12,15 @@ const EmptyState = dynamic(
 	() => import("./components/Pages/EmptyState/EmptyState")
 );
 
-const Bundleres = dynamic(
-	() => import("./components/Pages/Bundleres/Bundleres")
-);
+const Bundlers = dynamic(() => import("./components/Pages/Bundlers/Bundlers"));
 
 const Intro = dynamic(() => import("./components/Pages/Intro/Intro"));
 
 const UseState = dynamic(() => import("./components/Pages/UseState/UseState"));
+
+const PropDrilling = dynamic(
+	() => import("./components/Pages/PropDrilling/PropDrilling")
+);
 
 export default function Home() {
 	// const listings = await getListings();
@@ -30,7 +32,7 @@ export default function Home() {
 
 	switch (category) {
 		case "Bundlers":
-			componentToRender = <Bundleres />;
+			componentToRender = <Bundlers />;
 			break;
 		case "Intro":
 			componentToRender = <Intro />;
@@ -39,7 +41,7 @@ export default function Home() {
 			componentToRender = <UseState />;
 			break;
 		case "prop drilling":
-			componentToRender = <UseState />;
+			componentToRender = <PropDrilling />;
 			break;
 		case "prevState":
 			componentToRender = <UseState />;
@@ -85,7 +87,7 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		// console.log("category", category);
+		console.log("category", category);
 	}, [category]);
 
 	return (

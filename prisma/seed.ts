@@ -8,10 +8,10 @@ async function main() {
 
   const listings = [
     {
-      category: "Bundleres",
-      title: 'Bundleres',
+      category: "Bundlers",
+      title: 'Bundlers',
       description: 'Master bundlers and roll out snappy performance in your projects!',
-      imageSrc: 'bundleres-image.jpg',
+      imageSrc: 'bundlers-image.jpg',
       codeBlock: '...',
     },
     {

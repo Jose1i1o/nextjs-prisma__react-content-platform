@@ -23,7 +23,7 @@ import Container from "./Container";
 
 export const categories = [
 	{
-		label: "Bundleres",
+		label: "Bundlers",
 		icon: SiRollupdotjs,
 		description:
 			"Master bundlers and roll out snappy performance in your projects!",

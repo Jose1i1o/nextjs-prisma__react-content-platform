@@ -6,7 +6,7 @@ import { BsTerminal } from "react-icons/bs";
 
 type Props = {};
 
-const Bundleres: FC = (props: Props) => {
+const Bundlers: FC = (props: Props) => {
 	return (
 		<div className="p-4">
 			<Accordion variant="splitted" className="my-2" selectionMode="multiple">
@@ -860,4 +860,4 @@ const Bundleres: FC = (props: Props) => {
 	);
 };
 
-export default Bundleres;
+export default Bundlers;
