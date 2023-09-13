@@ -9,7 +9,7 @@ type Props = {};
 const Bundlers: FC = (props: Props) => {
 	return (
 		<div className="p-4">
-			<Accordion variant="splitted" className="my-2" selectionMode="multiple">
+			<Accordion variant="splitted" className="my-2">
 				<AccordionItem
 					key={0}
 					aria-label="Understanding JavaScript Bundlers and Frameworks"
@@ -220,8 +220,8 @@ const Bundlers: FC = (props: Props) => {
 				</AccordionItem>
 				<AccordionItem
 					key={3}
-					aria-label="Other Bundlers and Frameworks"
-					title="3. Other Bundlers and Frameworks"
+					aria-label="Other Bundlers"
+					title="3. Other Bundlers"
 				>
 					<div className="content p-4">
 						<p className="text-gray-700 mb-4">

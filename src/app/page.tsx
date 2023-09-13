@@ -35,52 +35,52 @@ export default function Home() {
 			componentToRender = <Bundlers />;
 			break;
 		case "Intro":
-			componentToRender = <Intro />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "useState":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "prop drilling":
-			componentToRender = <PropDrilling />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "prevState":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "useEffect":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "conditionals":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "Routing":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "useContext":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "Forms":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "useReducer":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "Async/Await":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "Dinamic Routing":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "Styled Components":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "Private Routes":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "Memoization":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		case "Optimizations":
-			componentToRender = <UseState />;
+			componentToRender = <EmptyState showReset />;
 			break;
 		default:
 			componentToRender = <EmptyState showReset />;

@@ -13,7 +13,7 @@ type EmptyStateProps = {
 
 const EmptyState: FC<EmptyStateProps> = ({
 	title = "Welcome to AIT DOCS",
-	subtitle = "Please, select a category to continue",
+	subtitle = "This category will be available in the near future. Please choose a category to proceed.",
 	showReset,
 }) => {
 	const router = useRouter();
