@@ -1,5 +1,5 @@
 "use client";
-
+// Let's see if we can trigger an update on sonarqube
 import React, { useState, useEffect, ReactNode, FC } from "react";
 
 type ClientOnlyProps = {
