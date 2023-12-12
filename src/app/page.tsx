@@ -35,7 +35,7 @@ export default function Home() {
 			componentToRender = <Bundlers />;
 			break;
 		case "Intro":
-			componentToRender = <EmptyState showReset />;
+			componentToRender = <Intro />;
 			break;
 		case "useState":
 			componentToRender = <EmptyState showReset />;
