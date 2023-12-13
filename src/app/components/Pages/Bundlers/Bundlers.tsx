@@ -17,7 +17,7 @@ const Bundlers: FC = (props: Props) => {
 				>
 					<div className="content p-4">
 						<h3 className="text-gray-700">
-							<strong>Main Advantages of Using a Web Bundler:</strong>
+						<strong>Main Advantages of Using a Web Bundler:</strong>
 						</h3>
 						<ul className="list-disc pl-6 my-2">
 							<li className="text-gray-700">

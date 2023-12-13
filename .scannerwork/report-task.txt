@@ -1,0 +1,6 @@
+projectKey=DockerTest
+serverUrl=http://127.0.0.1:8084
+serverVersion=8.7.1.42226
+dashboardUrl=http://127.0.0.1:8084/dashboard?id=DockerTest
+ceTaskId=AYxfFF2tETaly5o3ynpY
+ceTaskUrl=http://127.0.0.1:8084/api/ce/task?id=AYxfFF2tETaly5o3ynpY

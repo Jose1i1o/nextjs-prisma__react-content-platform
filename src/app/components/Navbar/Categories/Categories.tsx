@@ -139,6 +139,7 @@ const Categories = () => {
 	return (
 		<Container>
 			<div
+				key={category}
 				className="
           pt-4
           flex 
@@ -148,7 +149,7 @@ const Categories = () => {
           overflow-x-auto
         "
 			>
-				{categories.map(({ label, icon }) => (
+				{categories?.map(({ label, icon }) => (
 					<>
 						<CategoryBox
 							key={label}

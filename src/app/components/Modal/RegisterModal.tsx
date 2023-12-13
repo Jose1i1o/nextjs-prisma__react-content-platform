@@ -9,9 +9,9 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading/Heading";
-import Input from "../micro_components/Inputs/Input";
+import Input from "../shared/Inputs/Input";
 import toast from "react-hot-toast";
-import Button from "../micro_components/Button/Button";
+import Button from "../shared/Button/Button";
 import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {

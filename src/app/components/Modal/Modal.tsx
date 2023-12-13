@@ -9,7 +9,7 @@ import React, {
 } from "react";
 
 import { IoMdClose } from "react-icons/io";
-import Button from "../micro_components/Button/Button";
+import Button from "../shared/Button/Button";
 
 type ModalProps = {
 	isOpen?: boolean;

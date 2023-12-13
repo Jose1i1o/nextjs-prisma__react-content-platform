@@ -2,12 +2,25 @@
 
 import React, { FC } from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
+import OnlyFiles from "../../shared/Shandbox/OnlyFiles";
+import WithFiles from "../../shared/Shandbox/WithFiles";
+import WithPlayground from "../../shared/Shandbox/WithPlayground";
+import WithTests from "../../shared/Shandbox/WithTests";
+
+
 
 type Props = {};
 
 const Intro: FC = (props: Props) => {
 	return (
 		<div className="p-4">
+			<OnlyFiles />
+			<h2>With side bar</h2>
+			<WithFiles />
+			<h2>PlayGround</h2>
+			<WithPlayground />
+			<h2>With Tests</h2>
+			<WithTests />
 			<Accordion variant="splitted" className="my-2">
 				<AccordionItem
 					key={0}

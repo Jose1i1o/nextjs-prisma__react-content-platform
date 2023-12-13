@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { FC } from "react";
 import Heading from "../../Heading/Heading";
-import Button from "../../micro_components/Button/Button";
+import Button from "../../shared/Button/Button";
 
 type EmptyStateProps = {
 	title?: string;
