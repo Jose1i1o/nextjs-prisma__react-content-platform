@@ -1,17 +1,17 @@
 export const theme = {
 	colors: {
-		primary: '#153D8A',
-		primaryWithOpacity: 'rgba(21, 61, 138, 0.4)',
-		secondary: '#1C3E8C',
-		accent: '#9EC8F9',
-		error: '#E92C2C',
-		warning: '#E19B00',
+		primary: '#d80520',
+		primaryWithOpacity: 'rgba(216, 5, 32, 0.4)',
+		secondary: '#31475b',
+		accent: '#6063ff',
+		error: '#9013fe',
+		warning: '#6A451',
 		white: '#ffffff',
-		grey: '#707070',
-		textPrimary: '#383737',
-		textSecondary: '#1C3E8C',
-		placeholderColor: '#B4B4B4',
-		textLinks: '#326DC6',
+		grey: '#999',
+		textPrimary: '#31475b',
+		textSecondary: '#31475b',
+		placeholderColor: '#999',
+		textLinks: '#d80520',
 	},
 
 	button: {
@@ -39,7 +39,7 @@ export const theme = {
 		},
 	},
 	typography: {
-		fontFamily: '',
+		fontFamily: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif;",
 		tinyFontSize: 8.5,
 		miniFontSize: 12,
 		smallFontSize: 14,
@@ -60,7 +60,7 @@ export const theme = {
       surface2: "#ebebeb",
       surface3: "#ffffff",
       clickable: "#31475b",
-      base: "#ffffff",
+      base: "#31475b",
       disabled: "#d80520",
       hover: "#6063ff",
       accent: "#d80520",
@@ -84,7 +84,7 @@ export const theme = {
     font: {
       body: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif;",
       mono: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif;",
-      size: "15px",
+      size: "16px",
       lineHeight: "22px",
     },
   }
