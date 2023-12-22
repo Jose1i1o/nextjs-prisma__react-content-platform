@@ -1,14 +1,12 @@
-import React from 'react'
+import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
+import { HeaderProps } from '@/app/types';
 
-
-const title = "The Evolution of React.js: A Historical Perspective"
-
-export const HeaderSlider1: React.FC= _ => {
+export const HeaderSlider1: FC<HeaderProps> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("docs", title)}
+			{displayCorrectIcon("docs", blockTitle)}
 		</AccordionHeader>
 	)
 }
@@ -16,9 +14,6 @@ export const HeaderSlider1: React.FC= _ => {
 export const BodySlider1 = () => {
   return (
     <div className="content p-4">
-      <h3 className="text-gray-700">
-        <strong>{title}</strong>
-      </h3>
       <img
         src="https://res.cloudinary.com/dtvp3u4ql/image/upload/v1694708781/react_page/pv26w69j9quzpskpg238.gif"
         alt="React Logo Animated Gif"

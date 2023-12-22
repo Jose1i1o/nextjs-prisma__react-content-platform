@@ -1,12 +1,13 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { use, useEffect } from "react";
+import { useState, useEffect } from "react";
 import getListings from "./actions/getListings";
 import { usePathname, useSearchParams } from "next/navigation";
 
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container/Container";
+import { Sidebar } from "./components/Sidebar";
 
 const EmptyState = dynamic(
 	() => import("./components/Pages/EmptyState/EmptyState")
@@ -25,17 +26,81 @@ const PropDrilling = dynamic(
 export default function Home() {
 	// const listings = await getListings();
 
+	const [filteredCourseProgress, setFilteredCourseProgress] = useState({});
+
 	const params = useSearchParams();
 	const category = params?.get("category");
 
 	let componentToRender;
 
+	const completed = "completed";
+	const inProgress = "in progress";
+	const notCompleted = "not completed";
+	
+	const [courseProgress, setCourseProgress] = useState({
+		introductionVideo: {
+			title: "Introduction Video",
+			completionStatus: completed,
+			points: 5
+		},
+		understandingJSBundlers: {
+			title: "Understanding JavaScript Bundlers and Frameworks",
+			completionStatus: completed,
+			points: 10
+		},
+		webpack: {
+			title: "Webpack",
+			completionStatus: completed,
+			points: 10
+		},
+		vite: {
+			title: "Vite",
+			completionStatus: inProgress,
+			points: 10
+		},
+		otherBundlers: {
+			title: "Other Bundlers",
+			completionStatus: notCompleted,
+			points: 10
+		},
+		otherFrameworks: {
+			title: "Other Frameworks",
+			completionStatus: notCompleted,
+			points: 10
+		},
+		npm: {
+			title: "NPM and Dependency Management",
+			completionStatus: notCompleted,
+			points: 10
+		},
+		reactFilm: {
+			title: "React. The Film",
+			completionStatus: notCompleted,
+			points: 10
+		},
+		reactEvolution: {
+			title: "The Evolution of React.js: A Historical Perspective",
+			completionStatus: notCompleted,
+			points: 5
+		},
+		reactPlayground: {
+			title: "Playground: Testing your React skills",
+			completionStatus: notCompleted,
+			points: 8
+		},
+		introTestExercises: {
+			title: "Introduction Test Exercises",
+			completionStatus: notCompleted,
+			points: 12
+		},
+	});
+
 	switch (category) {
 		case "Bundlers":
-			componentToRender = <Bundlers />;
+			componentToRender = <Bundlers courseProgress={courseProgress}/>;
 			break;
 		case "Intro":
-			componentToRender = <Intro />;
+			componentToRender = <Intro courseProgress={courseProgress}/>;
 			break;
 		case "useState":
 			componentToRender = <EmptyState showReset />;
@@ -87,12 +152,45 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		console.log("category", category);
-	}, [category]);
+		// Filter the courseProgress based on the selected category
+		switch (category) {
+			case "Bundlers":
+				setFilteredCourseProgress({
+					introductionVideo: courseProgress.introductionVideo,
+					understandingJSBundlers: courseProgress.understandingJSBundlers,
+					webpack: courseProgress.webpack,
+					vite: courseProgress.vite,
+					otherBundlers: courseProgress.otherBundlers,
+					otherFrameworks: courseProgress.otherFrameworks,
+					npm: courseProgress.npm,
+				});
+				break;
+			case "Intro":
+				setFilteredCourseProgress({
+					reactFilm: courseProgress.reactFilm,
+					reactEvolution: courseProgress.reactEvolution,
+					reactPlayground: courseProgress.reactPlayground,
+					introTestExercises: courseProgress.introTestExercises,
+				});
+				break;
+			// Add other cases for each category
+			default:
+				setFilteredCourseProgress({});
+		}
+	}, [category, courseProgress]);
+
+	const [showSidebar, setShowSidebar] = useState(false);
 
 	return (
 		<ClientOnly>
-			<Container>{componentToRender}</Container>
+			<Container>
+				<div className="flex flex-col md:flex-row gap-4">
+				<Sidebar show={showSidebar} setter={setShowSidebar} courseProgress={filteredCourseProgress} />
+					<div className="flex flex-col gap-4 w-full">
+						{componentToRender}
+					</div>
+				</div>
+			</Container>
 		</ClientOnly>
 	);
 }

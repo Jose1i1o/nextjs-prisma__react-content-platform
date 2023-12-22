@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
 import WithPlayground from '@/app/components/shared/Shandbox/WithPlayground';
 import WithFiles from '@/app/components/shared/Shandbox/WithFiles';
+import { HeaderProps } from '@/app/types';
 
-
-const title = "Playground: Testing your React skills"
-
-export const HeaderSlider2: React.FC= _ => {
+export const HeaderSlider2: FC<HeaderProps> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("code", title)}
+			{displayCorrectIcon("code", blockTitle)}
 		</AccordionHeader>
 	)
 }

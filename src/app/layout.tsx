@@ -8,6 +8,7 @@ import ToasterProvider from "./components/shared/Toasters/ToasterProvider";
 import LoginModal from "./components/Modal/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import { Providers } from "./providers";
+import { theme } from "@/theme/theme";
 
 export const metadata: Metadata = {
 	title: "AIT Documentation",
@@ -18,6 +19,9 @@ const font = Nunito({
 	subsets: ["latin"],
 });
 
+const customBackground = '';
+
+
 export default async function RootLayout({
 	children,
 }: {
@@ -26,7 +30,7 @@ export default async function RootLayout({
 	const currentUser = await getCurrentUser();
 	return (
 		<html lang="en">
-			<body className={font.className}>
+			<body className={''}>
 				<Providers>
 					<ClientOnly>
 						<ToasterProvider />

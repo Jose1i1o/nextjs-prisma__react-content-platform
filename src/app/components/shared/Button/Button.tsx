@@ -1,5 +1,6 @@
 "use client";
 
+import { theme } from "@/theme/theme";
 import { FC, MouseEvent } from "react";
 import { IconType } from "react-icons";
 
@@ -23,8 +24,8 @@ const Button: FC<ButtonProps> = ({
 	return (
 		<button
 			className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full
-  ${outline ? "bg-white" : "bg-rose-500"}
-  ${outline ? "border-black" : "bg-rose-500"}
+  ${outline ? "bg-white" : theme.colors.primary}
+  ${outline ? "border-black" : theme.colors.primary}
   ${outline ? "text-black" : "text-white"}
   ${small ? "py-1" : "py-3"}
   ${small ? "text-sm" : "text-md"}

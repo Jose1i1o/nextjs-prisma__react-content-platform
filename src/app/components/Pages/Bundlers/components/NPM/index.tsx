@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
 import { Accordion, AccordionItem } from '@nextui-org/react';
+import { HeaderProps } from '@/app/types';
 
-
-const title = "NPM and Dependency Management"
-
-export const HeaderSliderNPM: React.FC= _ => {
+export const HeaderSliderNPM:FC<HeaderProps> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("docs", title)}
+			{displayCorrectIcon("docs", blockTitle)}
 		</AccordionHeader>
 	)
 }

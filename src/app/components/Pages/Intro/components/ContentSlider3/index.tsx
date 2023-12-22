@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
 import WithTests from '@/app/components/shared/Shandbox/WithTests';
+import { HeaderProps } from '@/app/types';
 
-
-const title = "Introduction Test Exercises"
-
-export const HeaderSlider3: React.FC= _ => {
+export const HeaderSlider3: FC<HeaderProps> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("test", title)}
+			{displayCorrectIcon("test", blockTitle)}
 		</AccordionHeader>
 	)
 }

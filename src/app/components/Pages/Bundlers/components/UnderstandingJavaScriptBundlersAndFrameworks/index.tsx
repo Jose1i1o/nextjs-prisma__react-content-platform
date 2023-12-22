@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
+import { HeaderProps } from '@/app/types';
 
 
-const title = "Understanding JavaScript Bundlers and Frameworks"
-
-export const HeaderUnderstandingJavaScriptBundlersAndFrameworks: React.FC= _ => {
+export const HeaderUnderstandingJavaScriptBundlersAndFrameworks:FC<HeaderProps>= ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("docs", title)}
+			{displayCorrectIcon("docs", blockTitle)}
 		</AccordionHeader>
 	)
 }

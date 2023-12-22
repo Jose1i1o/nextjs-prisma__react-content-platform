@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
 import { BsTerminal } from 'react-icons/bs';
 import { Accordion, AccordionItem } from '@nextui-org/react';
+import { HeaderProps } from '@/app/types';
 
-
-const title = "Other Bundlers"
-
-export const HeaderSliderOtherBundlers: React.FC= _ => {
+export const HeaderSliderOtherBundlers:FC<HeaderProps> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("docs", title)}
+			{displayCorrectIcon("docs", blockTitle)}
 		</AccordionHeader>
 	)
 }

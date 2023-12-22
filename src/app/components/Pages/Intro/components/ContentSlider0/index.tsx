@@ -1,14 +1,12 @@
-import React from 'react'
+import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
+import { HeaderProps } from '@/app/types';
 
-
-const title = "React. The Film"
-
-export const HeaderSlider0: React.FC= _ => {
+export const HeaderSlider0: FC<HeaderProps> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("video", title)}
+			{displayCorrectIcon("video", blockTitle)}
 		</AccordionHeader>
 	)
 }
