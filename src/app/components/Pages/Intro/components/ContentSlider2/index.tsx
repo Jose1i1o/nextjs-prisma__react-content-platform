@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
-import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
+import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import WithPlayground from '@/app/components/shared/Shandbox/WithPlayground';
 import WithFiles from '@/app/components/shared/Shandbox/WithFiles';
 import { HeaderProps } from '@/app/types';

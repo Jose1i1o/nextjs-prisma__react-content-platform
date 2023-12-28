@@ -39,7 +39,7 @@ export const displayCorrectIcon = (icon: string, title: string) => {
       <div style={{ marginRight: '10px', color }}>{selectedIcon}</div>
       <div style={{ marginRight: '10px', fontStyle: 'italic', color }}><strong>{getTitlePrefix(icon)}</strong></div>
       <div style={{ marginRight: '10px', fontSize: '1.2em' }}>{emojis[Math.floor(Math.random() * emojis.length)]}</div>
-			<strong>{title}</strong>
+			<div style={{ fontWeight: 600, fontStyle: 'cursive' }}>{title}</div>
     </div>
     );
 };

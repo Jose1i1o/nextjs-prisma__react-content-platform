@@ -23,10 +23,18 @@ export type GenericBlockProps = {
   show?: boolean;
   setter?: React.Dispatch<React.SetStateAction<boolean>>;
   courseProgress: {
+    [key: string]: {
+      moduleDetails: {
+        module: string;
+        completionStatus: string;
+        title: string;
+        progress: number;
+      };
       [key: string]: {
         title: string;
-        completionStatus: string;
-        points: number;
+        completionStatus?: string;
+        points?: number;
       };
+    };
   };
 };

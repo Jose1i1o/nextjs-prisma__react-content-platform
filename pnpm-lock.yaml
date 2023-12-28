@@ -71,6 +71,9 @@ dependencies:
   react:
     specifier: 18.2.0
     version: 18.2.0
+  react-archer:
+    specifier: ^4.3.0
+    version: 4.3.0(@types/react@18.2.19)(prop-types@15.8.1)(react@18.2.0)
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
@@ -86,6 +89,9 @@ dependencies:
   react-icons:
     specifier: ^4.10.1
     version: 4.12.0(react@18.2.0)
+  react-xarrows:
+    specifier: ^2.0.2
+    version: 2.0.2(react@18.2.0)
   styled-components:
     specifier: ^6.1.1
     version: 6.1.1(react-dom@18.2.0)(react@18.2.0)
@@ -4857,6 +4863,10 @@ packages:
     resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}
     dev: false
 
+  /lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
+
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -5500,6 +5510,20 @@ packages:
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  /react-archer@4.3.0(@types/react@18.2.19)(prop-types@15.8.1)(react@18.2.0):
+    resolution: {integrity: sha512-DXSTq/1oKEL7g5zLsvw+1WeE5Ofwd9CBooqCxcG1/0OOd5j7k5uXMRHa8Wf/8sAbUm/8cW6v1nAwHnFdFEhF6g==}
+    peerDependencies:
+      '@types/react': ^16.8.8 || ^17 || ^18
+      prop-types: ^15.6.2
+      react: ^16.9.0 || ^17 || ^18
+    dependencies:
+      '@types/react': 18.2.19
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-fast-compare: 2.0.4
+      resize-observer-polyfill: 1.5.0
+    dev: false
+
   /react-devtools-inline@4.4.0:
     resolution: {integrity: sha512-ES0GolSrKO8wsKbsEkVeiR/ZAaHQTY4zDh1UW8DImVmm8oaGLl3ijJDvSGe+qDRKPZdPRnDtWWnSvvrgxXdThQ==}
     dependencies:
@@ -5514,6 +5538,10 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-fast-compare@2.0.4:
+    resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
     dev: false
 
   /react-feather@2.0.10(react@18.2.0):
@@ -5630,6 +5658,17 @@ packages:
       - '@types/react'
     dev: false
 
+  /react-xarrows@2.0.2(react@18.2.0):
+    resolution: {integrity: sha512-tDlAqaxHNmy0vegW/6NdhoWyXJq1LANX/WUAlHyzoHe9BwFVnJPPDghmDjYeVr7XWFmBrVTUrHsrW7GKYI6HtQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      '@types/prop-types': 15.7.11
+      lodash: 4.17.21
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -5682,6 +5721,10 @@ packages:
       call-bind: 1.0.5
       define-properties: 1.2.1
       set-function-name: 2.0.1
+    dev: false
+
+  /resize-observer-polyfill@1.5.0:
+    resolution: {integrity: sha512-M2AelyJDVR/oLnToJLtuDJRBBWUGUvvGigj1411hXhAdyFWqMaqHp7TixW3FpiLuVaikIcR1QL+zqoJoZlOgpg==}
     dev: false
 
   /resolve-from@4.0.0:

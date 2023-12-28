@@ -5,7 +5,8 @@
 html,
 body,
 :root {
-	font-family: 'Wotfard',Futura,-apple-system,sans-serif;
+	/* font-family: 'Wotfard',Futura,-apple-system,sans-serif; */
+	/* font-family: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif"; */
 	height: 100%;
 }
 

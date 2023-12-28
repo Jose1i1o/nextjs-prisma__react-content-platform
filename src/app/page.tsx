@@ -8,6 +8,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container/Container";
 import { Sidebar } from "./components/Sidebar";
+import styled from "styled-components";
 
 const EmptyState = dynamic(
 	() => import("./components/Pages/EmptyState/EmptyState")
@@ -33,67 +34,84 @@ export default function Home() {
 
 	let componentToRender;
 
-	const completed = "completed";
-	const inProgress = "in progress";
-	const notCompleted = "not completed";
+	const completionTypes = {
+		completed: "completed",
+		inProgress: "inProgress",
+		notCompleted: "notCompleted",
+	};
 	
 	const [courseProgress, setCourseProgress] = useState({
-		introductionVideo: {
-			title: "Introduction Video",
-			completionStatus: completed,
-			points: 5
+		module0: {
+			moduleDetails: {
+				module: "Module 0",
+				title: "Bundlers",
+				completionStatus: completionTypes.inProgress,
+				progress: 100,
+			},
+			introductionVideo: {
+				title: "Introduction Video",
+				completionStatus: completionTypes.completed,
+				points: 5
+			},
+			understandingJSBundlers: {
+				title: "JavaScript Bundlers",
+				completionStatus: completionTypes.completed,
+				points: 10
+			},
+			webpack: {
+				title: "Webpack",
+				completionStatus: completionTypes.completed,
+				points: 10
+			},
+			vite: {
+				title: "Vite",
+				completionStatus: completionTypes.inProgress,
+				points: 10
+			},
+			otherBundlers: {
+				title: "Other Bundlers",
+				completionStatus: "notCompleted",
+				points: 10
+			},
+			otherFrameworks: {
+				title: "Other Frameworks",
+				completionStatus: completionTypes.notCompleted,
+				points: 10
+			},
+			npm: {
+				title: "NPM and others",
+				completionStatus: completionTypes.notCompleted,
+				points: 10
+			},
 		},
-		understandingJSBundlers: {
-			title: "Understanding JavaScript Bundlers and Frameworks",
-			completionStatus: completed,
-			points: 10
-		},
-		webpack: {
-			title: "Webpack",
-			completionStatus: completed,
-			points: 10
-		},
-		vite: {
-			title: "Vite",
-			completionStatus: inProgress,
-			points: 10
-		},
-		otherBundlers: {
-			title: "Other Bundlers",
-			completionStatus: notCompleted,
-			points: 10
-		},
-		otherFrameworks: {
-			title: "Other Frameworks",
-			completionStatus: notCompleted,
-			points: 10
-		},
-		npm: {
-			title: "NPM and Dependency Management",
-			completionStatus: notCompleted,
-			points: 10
-		},
-		reactFilm: {
-			title: "React. The Film",
-			completionStatus: notCompleted,
-			points: 10
-		},
-		reactEvolution: {
-			title: "The Evolution of React.js: A Historical Perspective",
-			completionStatus: notCompleted,
-			points: 5
-		},
-		reactPlayground: {
-			title: "Playground: Testing your React skills",
-			completionStatus: notCompleted,
-			points: 8
-		},
-		introTestExercises: {
-			title: "Introduction Test Exercises",
-			completionStatus: notCompleted,
-			points: 12
-		},
-	});
+		module1: {
+			moduleDetails: {
+				module: "Module 1",
+				completionStatus: completionTypes.notCompleted,
+				title: "Introduction to React",
+				progress: 50,
+			},
+			reactFilm: {
+				title: "React. The Film",
+				completionStatus: completionTypes.notCompleted,
+				points: 10
+			},
+			reactEvolution: {
+				title: "The Evolution of React.js",
+				completionStatus: completionTypes.notCompleted,
+				points: 5
+			},
+			reactPlayground: {
+				title: "Playground: Testing your React skills",
+				completionStatus: completionTypes.notCompleted,
+				points: 8
+			},
+			introTestExercises: {
+				title: "Introduction Test Exercises",
+				completionStatus: completionTypes.notCompleted,
+				points: 12
+			},
+	}});
 
 	switch (category) {
 		case "Bundlers":
@@ -156,21 +174,23 @@ export default function Home() {
 		switch (category) {
 			case "Bundlers":
 				setFilteredCourseProgress({
-					introductionVideo: courseProgress.introductionVideo,
-					understandingJSBundlers: courseProgress.understandingJSBundlers,
-					webpack: courseProgress.webpack,
-					vite: courseProgress.vite,
-					otherBundlers: courseProgress.otherBundlers,
-					otherFrameworks: courseProgress.otherFrameworks,
-					npm: courseProgress.npm,
+					moduleDetails: courseProgress.module0.moduleDetails,
+					introductionVideo: courseProgress.module0.introductionVideo,
+					understandingJSBundlers: courseProgress.module0.understandingJSBundlers,
+					webpack: courseProgress.module0.webpack,
+					vite: courseProgress.module0.vite,
+					otherBundlers: courseProgress.module0.otherBundlers,
+					otherFrameworks: courseProgress.module0.otherFrameworks,
+					npm: courseProgress.module0.npm,
 				});
 				break;
 			case "Intro":
 				setFilteredCourseProgress({
-					reactFilm: courseProgress.reactFilm,
-					reactEvolution: courseProgress.reactEvolution,
-					reactPlayground: courseProgress.reactPlayground,
-					introTestExercises: courseProgress.introTestExercises,
+					moduleDetails: courseProgress.module1.moduleDetails,
+					reactFilm: courseProgress.module1.reactFilm,
+					reactEvolution: courseProgress.module1.reactEvolution,
+					reactPlayground: courseProgress.module1.reactPlayground,
+					introTestExercises: courseProgress.module1.introTestExercises,
 				});
 				break;
 			// Add other cases for each category
@@ -184,7 +204,7 @@ export default function Home() {
 	return (
 		<ClientOnly>
 			<Container>
-				<div className="flex flex-col md:flex-row gap-4">
+				<div className="bg-neutral-950 flex flex-col md:flex-row gap-4">
 				<Sidebar show={showSidebar} setter={setShowSidebar} courseProgress={filteredCourseProgress} />
 					<div className="flex flex-col gap-4 w-full">
 						{componentToRender}

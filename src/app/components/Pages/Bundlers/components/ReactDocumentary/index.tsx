@@ -1,18 +1,21 @@
 import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
-import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
+import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { HeaderProps } from '@/app/types';
 
 export const HeaderSliderReactDocumentary:FC<HeaderProps> = ({ blockTitle }) => {
 	return (
+    <>
 		<AccordionHeader>
 			{displayCorrectIcon("video", blockTitle)}
 		</AccordionHeader>
+    </>
 	)
 }
 
 export const BodySliderReactDocumentary = () => {
   return (
+    <>
     <iframe
       width="100%"
       height="315"
@@ -22,5 +25,6 @@ export const BodySliderReactDocumentary = () => {
       allowFullScreen
       style={{ maxWidth: '100%' }}
     ></iframe>
+    </>
   );
 };

@@ -21,42 +21,42 @@ import AccordionGeneric from "../../shared/Accordion/AccordionGeneric";
 import { GenericBlockProps, accordionItemProps } from "@/app/types";
 
 const Bundlers: FC<GenericBlockProps> = ({ courseProgress }) => {
-  const startNumber = 0;
+  const moduleIndex = 0;
 
   const accordionItems: accordionItemProps = [
     {
-      id: startNumber,
-      title: <HeaderSliderReactDocumentary blockTitle={courseProgress.introductionVideo.title} />,
+      id: moduleIndex,
+      title: <HeaderSliderReactDocumentary blockTitle={courseProgress.module0.introductionVideo.title} />,
       content: <BodySliderReactDocumentary />,
     },
     {
-      id: startNumber + 1,
-      title: <HeaderUnderstandingJavaScriptBundlersAndFrameworks blockTitle={courseProgress.understandingJSBundlers.title} />,
+      id: moduleIndex + 1,
+      title: <HeaderUnderstandingJavaScriptBundlersAndFrameworks blockTitle={courseProgress.module0.understandingJSBundlers.title} />,
       content: <BodyUnderstandingJavaScriptBundlersAndFrameworks />,
     },
     {
-      id: startNumber + 2,
-      title: <HeaderSliderWebpack blockTitle={courseProgress.webpack.title} />,
+      id: moduleIndex + 2,
+      title: <HeaderSliderWebpack blockTitle={courseProgress.module0.webpack.title} />,
       content: <BodySliderWebpack />,
     },
     {
-      id: startNumber + 3,
-      title: <HeaderSliderVite blockTitle={courseProgress.vite.title} />,
+      id: moduleIndex + 3,
+      title: <HeaderSliderVite blockTitle={courseProgress.module0.vite.title} />,
       content: <BodySliderVite />,
     },
     {
-      id: startNumber + 4,
-      title: <HeaderSliderOtherBundlers blockTitle={courseProgress.otherBundlers.title} />,
+      id: moduleIndex + 4,
+      title: <HeaderSliderOtherBundlers blockTitle={courseProgress.module0.otherBundlers.title} />,
       content: <BodySliderOtherBundlers />,
     },
     {
-      id: startNumber + 5,
-      title: <HeaderSliderOtherFrameworks blockTitle={courseProgress.otherFrameworks.title} />,
+      id: moduleIndex + 5,
+      title: <HeaderSliderOtherFrameworks blockTitle={courseProgress.module0.otherFrameworks.title} />,
       content: <BodySliderOtherFrameworks />,
     },
     {
-      id: startNumber + 6,
-      title: <HeaderSliderNPM blockTitle={courseProgress.npm.title} />,
+      id: moduleIndex + 6,
+      title: <HeaderSliderNPM blockTitle={courseProgress.module0.npm.title} />,
       content: <BodySliderNPM />,
     },
   ];

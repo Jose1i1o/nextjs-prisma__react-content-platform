@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
-import { displayCorrectIcon } from '@/app/components/shared/DisplayIcon';
+import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { HeaderProps } from '@/app/types';
+import { StyledFirstLetterInParagraph } from '@/app/components/shared/StyledFirstLetterInParagraph';
 
 export const HeaderSlider1: FC<HeaderProps> = ({ blockTitle }) => {
 	return (
@@ -18,13 +19,13 @@ export const BodySlider1 = () => {
         src="https://res.cloudinary.com/dtvp3u4ql/image/upload/v1694708781/react_page/pv26w69j9quzpskpg238.gif"
         alt="React Logo Animated Gif"
       />
-      <p>
+      <StyledFirstLetterInParagraph>
         React, also known as React.js or ReactJS, is a widely-used{" "}
         <strong>JavaScript library</strong> for building user interfaces. Its
         journey began in 2011 when it was created by Jordan Walke, a software
         engineer at Facebook. React was open-sourced by Facebook in 2013, and it
         has since become a cornerstone of modern web development.
-      </p>
+      </StyledFirstLetterInParagraph>
       <p>
         <strong>Why React?</strong>
       </p>
