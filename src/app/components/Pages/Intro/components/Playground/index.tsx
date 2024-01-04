@@ -3,21 +3,22 @@ import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import WithPlayground from '@/app/components/shared/Shandbox/WithPlayground';
 import WithFiles from '@/app/components/shared/Shandbox/WithFiles';
-import { HeaderProps } from '@/app/types';
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 
-export const HeaderSlider2: FC<HeaderProps> = ({ blockTitle }) => {
+export const HeaderSliderPlayground: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("code", blockTitle)}
+			{blockTitle && displayCorrectIcon("docs", blockTitle)}
 		</AccordionHeader>
 	)
 }
 
-export const BodySlider2 = () => {
+export const BodySliderPlayground = () => {
   return (
 		<>
     	<WithPlayground />
 			{/* <WithFiles /> */}
+			<SetToCompleteButton />
 		</>
   )
 }

@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
-import { HeaderProps } from '@/app/types';
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 
 
-export const HeaderUnderstandingJavaScriptBundlersAndFrameworks:FC<HeaderProps>= ({ blockTitle }) => {
+export const HeaderUnderstandingJavaScriptBundlersAndFrameworks: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
 			{displayCorrectIcon("docs", blockTitle)}
@@ -45,6 +45,7 @@ export const BodyUnderstandingJavaScriptBundlersAndFrameworks = () => {
 					it easier to include them in your project.
 				</li>
 			</ul>
+			<SetToCompleteButton />
 		</div>
 	
   )

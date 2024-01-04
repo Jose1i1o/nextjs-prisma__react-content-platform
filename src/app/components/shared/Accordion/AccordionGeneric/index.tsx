@@ -50,7 +50,7 @@ const AccordionGeneric: FC<Props> = ({ accordionItems }) => {
           },
         },
       }}>
-        {accordionItems.map((item) => (
+        {accordionItems && accordionItems?.map((item) => (
           <AccordionItem
             key={item.id}
             aria-label={item.title?.toString()}

@@ -1,55 +1,30 @@
-'use client'
-
 import React, { FC } from "react";
 import {
-  HeaderSlider0,
-  BodySlider0,
-  HeaderSlider1,
-  BodySlider1,
-  HeaderSlider2,
-  BodySlider2,
-  HeaderSlider3,
-  BodySlider3,
+  HeaderSliderReactDocumentary,
+  BodySliderReactDocumentary,
+  HeaderSliderEvolutionReact,
+  BodySliderEvolutionReact,
+  HeaderSliderPlayground,
+  BodySliderPlayground,
+  HeaderSliderExercises,
+  BodySliderExercises,
 } from "./components";
 import AccordionGeneric from "../../shared/Accordion/AccordionGeneric";
-import { GenericBlockProps, accordionItemProps } from "@/app/types";
+import { GenericModuleProps, ModuleDescription, ModuleInfo, accordionItemProps } from "@/app/types";
+import { createAccordionItems } from "../../shared/Accordion/CreateAccordionItems";
 
-const Intro: FC<GenericBlockProps> = ({ courseProgress }) => {
+const Intro: FC<ModuleInfo> = ({ moduleInfo }) => {
 
-  console.log("courseProgress", courseProgress);
+  const { sections } = moduleInfo ? moduleInfo : { sections: [] };
 
-  const accordionItems: accordionItemProps = [
-    {
-      id: 0,
-      title: <HeaderSlider0 blockTitle={courseProgress.module1.reactFilm.title} />,
-      content: <BodySlider0 />,
-    },
-    {
-      id: 1,
-      title: (
-        <HeaderSlider1 blockTitle={courseProgress.module1.reactEvolution.title} />
-      ),
-      content: <BodySlider1 />,
-    },
-    {
-      id: 2,
-      title: (
-        <HeaderSlider2 blockTitle={courseProgress.module1.reactPlayground.title} />
-      ),
-      content: <BodySlider2 />,
-    },
-    {
-      id: 3,
-      title: (
-        <HeaderSlider3
-        blockTitle={courseProgress.module1.introTestExercises.title}
-       />
-      ),
-      content: <BodySlider3 />,
-    },
-  ];
+  const headerSliders = [HeaderSliderReactDocumentary, HeaderSliderEvolutionReact, HeaderSliderPlayground, HeaderSliderExercises];
+  const bodySliders = [BodySliderReactDocumentary, BodySliderEvolutionReact, BodySliderPlayground, BodySliderExercises];
 
-  return <AccordionGeneric accordionItems={accordionItems} />;
-};
+  const accordionItems = createAccordionItems(sections, headerSliders, bodySliders);
+  
+  return (
+    <AccordionGeneric accordionItems={accordionItems} />
+  );
+}
 
 export default Intro;

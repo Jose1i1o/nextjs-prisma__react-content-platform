@@ -2,10 +2,10 @@ import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { BsTerminal } from 'react-icons/bs';
-import { HeaderProps } from '@/app/types';
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 
 
-export const HeaderSliderVite:FC<HeaderProps>= ({ blockTitle }) => {
+export const HeaderSliderVite: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
 			{displayCorrectIcon("docs", blockTitle)}
@@ -83,6 +83,7 @@ export const BodySliderVite = () => {
 					</a>
 					.
 				</p>
+				<SetToCompleteButton />
 			</div>
 		</>
   )
