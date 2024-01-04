@@ -7,8 +7,6 @@ import { useSearchParams } from "next/navigation";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container/Container";
 import { Sidebar } from "./components/Sidebar";
-import styled from "styled-components";
-import { set } from 'react-hook-form';
 
 const EmptyState = dynamic(
 	() => import("./components/Pages/EmptyState/EmptyState")
@@ -26,8 +24,7 @@ const PropDrilling = dynamic(
 
 const Home = () => {
 	const [moduleInfo, setModuleInfo] = useState();
-	const moduleTitle = moduleInfo?.title;
-	
+
 	const [isLoading, setIsLoading] = useState(false);
 	const params = useSearchParams();
 	
@@ -58,10 +55,10 @@ const Home = () => {
 const renderComponent = () => {
 	switch (category) {
 			case "Bundlers":
-				return <Bundlers moduleInfo={moduleInfo} />;
+				return moduleInfo ? <Bundlers moduleInfo={moduleInfo} /> : null;
 				break;
 			case "Intro":
-				return <Intro moduleInfo={moduleInfo} />;
+				return moduleInfo ? <Intro moduleInfo={moduleInfo} /> : null;
 				break;
 			case "useState":
 				return <EmptyState showReset />;
@@ -118,7 +115,7 @@ const renderComponent = () => {
 		<ClientOnly>
 				<Container>
 						<div className="bg-neutral-950 flex flex-col md:flex-row gap-4">
-								<Sidebar show={showSidebar} setter={setShowSidebar} moduleInfo={moduleInfo} />
+								{moduleInfo && <Sidebar show={showSidebar} setter={setShowSidebar} moduleInfo={moduleInfo} />}
 								<div className="flex flex-col gap-4 w-full">
 										{isLoading ? <div>Loading...</div> : renderComponent()}
 								</div>
