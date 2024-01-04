@@ -9,7 +9,9 @@ export async function GET(
   res: NextApiResponse
 ) {
   const category = new URL(request.url).searchParams;
-  const categoryValue = category.get('category');  
+  console.log('category', category);
+  const categoryValue = category.get('category');
+  console.log('categoryValue', categoryValue);
 
   try {
     // Fetch single module
@@ -29,6 +31,8 @@ export async function GET(
       }
     });
 
+    console.log('thisModule', thisModule);
+    
     if (thisModule) {
       // Fetch sections for the retrieved module
       const sections = await prisma.section.findMany({
