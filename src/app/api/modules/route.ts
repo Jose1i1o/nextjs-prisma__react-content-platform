@@ -1,7 +1,6 @@
-import { log } from 'console';
 import prisma from '../../../libs/prismadb';
 import { NextResponse } from 'next/server';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiResponse } from 'next';
 
 
 export async function GET(

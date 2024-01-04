@@ -21,6 +21,8 @@ model User {
   accounts Account[]
   sessions Session[]
   reviews  Reviews[]
+  moduleProgress UserModuleProgress[]
+  sectionProgress UserSectionProgress[]
 }
 
 model Account {
@@ -56,6 +58,19 @@ model Session {
   @@unique([userId, sessionToken])
 }
 
+model UserModuleProgress {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  moduleId          String  @db.ObjectId
+  completionStatus  String
+  progress          Int
+
+  user              User   @relation(fields: [userId], references: [id])
+  module            Module @relation(fields: [moduleId], references: [id])
+
+  @@unique([userId, moduleId])
+}
+
 model Module {
   id                String         @id @default(auto()) @map("_id") @db.ObjectId
   moduleTitle       String
@@ -66,7 +81,20 @@ model Module {
   createdAt         DateTime       @default(now())
   updatedAt         DateTime       @updatedAt
   sections          Section[]      
-  reviews           Reviews[]      
+  reviews           Reviews[]
+  userModuleProgress UserModuleProgress[]      
+}
+
+model UserSectionProgress {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  sectionId         String  @db.ObjectId
+  completionStatus  String
+
+  user    User    @relation(fields: [userId], references: [id])
+  section Section @relation(fields: [sectionId], references: [id])
+
+  @@unique([userId, sectionId])
 }
 
 model Section {
@@ -79,6 +107,7 @@ model Section {
   updatedAt       DateTime @updatedAt
 
   module          Module @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  userProgress    UserSectionProgress[]
 }
 
 model Reviews {
