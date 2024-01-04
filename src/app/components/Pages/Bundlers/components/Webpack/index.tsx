@@ -2,9 +2,9 @@ import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { BsTerminal } from 'react-icons/bs';
-import { HeaderProps } from '@/app/types';
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 
-export const HeaderSliderWebpack:FC<HeaderProps>= ({ blockTitle }) => {
+export const HeaderSliderWebpack: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
 			{displayCorrectIcon("docs", blockTitle)}
@@ -109,6 +109,7 @@ export const BodySliderWebpack = () => {
 					.
 				</p>
 			</div>
+			<SetToCompleteButton />
 		</>
 	
   )

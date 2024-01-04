@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
-import { HeaderProps } from '@/app/types';
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 
-export const HeaderSliderReactDocumentary:FC<HeaderProps> = ({ blockTitle }) => {
+export const HeaderSliderReactDocumentary: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
     <>
 		<AccordionHeader>
@@ -25,6 +25,7 @@ export const BodySliderReactDocumentary = () => {
       allowFullScreen
       style={{ maxWidth: '100%' }}
     ></iframe>
+    <SetToCompleteButton  />
     </>
   );
 };

@@ -1,18 +1,19 @@
 import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
-import { HeaderProps } from '@/app/types';
 import { StyledFirstLetterInParagraph } from '@/app/components/shared/StyledFirstLetterInParagraph';
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
+import { Header } from 'next/dist/lib/load-custom-routes';
 
-export const HeaderSlider1: FC<HeaderProps> = ({ blockTitle }) => {
+export const HeaderSliderEvolutionReact: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("docs", blockTitle)}
+			{blockTitle && displayCorrectIcon("docs", blockTitle)}
 		</AccordionHeader>
 	)
 }
 
-export const BodySlider1 = () => {
+export const BodySliderEvolutionReact = () => {
   return (
     <div className="content p-4">
       <img
@@ -91,6 +92,7 @@ export const BodySlider1 = () => {
         application, React's versatility and community support make it an
         excellent choice for your web development journey.
       </p>
+      <SetToCompleteButton />
     </div>
   )
 }

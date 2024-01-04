@@ -2,9 +2,10 @@ import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { Accordion, AccordionItem } from '@nextui-org/react';
-import { HeaderProps } from '@/app/types';
 
-export const HeaderSliderNPM:FC<HeaderProps> = ({ blockTitle }) => {
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
+
+export const HeaderSliderNPM: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
 			{displayCorrectIcon("docs", blockTitle)}
@@ -14,6 +15,7 @@ export const HeaderSliderNPM:FC<HeaderProps> = ({ blockTitle }) => {
 
 export const BodySliderNPM = () => {
   return (
+		<>
 		<Accordion selectionMode="multiple" variant="splitted">
 			<AccordionItem
 				key={5.1}
@@ -246,5 +248,7 @@ export const BodySliderNPM = () => {
 				</p>
 			</AccordionItem>
 		</Accordion>
+		<SetToCompleteButton />
+		</>
   )
 }

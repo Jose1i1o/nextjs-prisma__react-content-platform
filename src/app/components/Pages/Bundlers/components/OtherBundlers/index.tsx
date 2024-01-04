@@ -3,9 +3,10 @@ import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { BsTerminal } from 'react-icons/bs';
 import { Accordion, AccordionItem } from '@nextui-org/react';
-import { HeaderProps } from '@/app/types';
 
-export const HeaderSliderOtherBundlers:FC<HeaderProps> = ({ blockTitle }) => {
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
+
+export const HeaderSliderOtherBundlers: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
 			{displayCorrectIcon("docs", blockTitle)}
@@ -249,6 +250,7 @@ export const BodySliderOtherBundlers = () => {
 			  	often given by the framework of our choice. But it is important to
 			  	understand what it is and what it does.
 			  </p>
+				<SetToCompleteButton />
 		</div>
     </>
   )

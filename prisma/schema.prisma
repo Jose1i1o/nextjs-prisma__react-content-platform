@@ -56,28 +56,41 @@ model Session {
   @@unique([userId, sessionToken])
 }
 
-model Listing {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  category    String
-  title       String
-  description String
-  imageSrc    String
-  codeBlock   String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Module {
+  id                String         @id @default(auto()) @map("_id") @db.ObjectId
+  moduleTitle       String
+  moduleItem        String       
+  title             String         
+  completionStatus  String        
+  progress          Int            
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  sections          Section[]      
+  reviews           Reviews[]      
+}
 
-  reviews Reviews[]
+model Section {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  moduleId        String   @db.ObjectId
+  title           String
+  completionStatus String
+  points          Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  module          Module @relation(fields: [moduleId], references: [id], onDelete: Cascade)
 }
 
 model Reviews {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   userId    String   @db.ObjectId
-  listingId String   @db.ObjectId
+  moduleId  String   @db.ObjectId
+  sectionId String   @db.ObjectId
   rating    Int
   comment   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  module  Module @relation(fields: [moduleId], references: [id], onDelete: Cascade)
   User    User    @relation(fields: [userId], references: [id])
 }

@@ -1,18 +1,18 @@
 import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
-import { HeaderProps } from '@/app/types';
-import Button from '@/app/components/shared/Button/Button';
+import {SetToCompleteButton} from '@/app/components/shared/Button/SetToCompleteButton';
 
-export const HeaderSlider0: FC<HeaderProps> = ({ blockTitle }) => {
+export const HeaderSliderReactDocumentary: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("video", blockTitle)}
+			{blockTitle && displayCorrectIcon("docs", blockTitle)}
 		</AccordionHeader>
 	)
 }
 
-export const BodySlider0 = () => {
+export const BodySliderReactDocumentary = () => {
+
   return (
     <>
       <iframe
@@ -24,7 +24,7 @@ export const BodySlider0 = () => {
         allowFullScreen
         style={{ maxWidth: '100%' }}
       ></iframe>
-      <Button label="Complete" onClick={() => console.log("clicked")} icon={"check"} />
+      <SetToCompleteButton />
     </>
   );
 };

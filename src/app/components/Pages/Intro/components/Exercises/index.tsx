@@ -2,18 +2,21 @@ import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import WithTests from '@/app/components/shared/Shandbox/WithTests';
-import { HeaderProps } from '@/app/types';
+import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 
-export const HeaderSlider3: FC<HeaderProps> = ({ blockTitle }) => {
+export const HeaderSliderExercises: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{displayCorrectIcon("test", blockTitle)}
+			{blockTitle && displayCorrectIcon("docs", blockTitle)}
 		</AccordionHeader>
 	)
 }
 
-export const BodySlider3 = () => {
+export const BodySliderExercises = () => {
   return (
-    <WithTests />
+		<>
+    	<WithTests />
+			<SetToCompleteButton />
+		</>
   )
 }

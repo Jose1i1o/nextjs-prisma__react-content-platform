@@ -12,6 +12,8 @@ export const theme = {
 		textSecondary: '#31475b',
 		placeholderColor: '#999',
 		textLinks: '#d80520',
+		gradient: 'linear-gradient(to right, #ffdb3a 45%, #d80520 100%)',
+		
 	},
 
 	button: {
