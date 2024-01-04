@@ -13,7 +13,7 @@ export async function GET(
 
   try {
     // Fetch single module
-    const module = await prisma.module.findFirst({
+    const thisModule = await prisma.module.findFirst({
       where: {
         moduleTitle: categoryValue || undefined
       },
@@ -29,11 +29,11 @@ export async function GET(
       }
     });
 
-    if (module) {
+    if (thisModule) {
       // Fetch sections for the retrieved module
       const sections = await prisma.section.findMany({
         where: {
-          moduleId: module.id
+          moduleId: thisModule.id
         },
         orderBy: {
           createdAt: 'desc'
@@ -48,7 +48,7 @@ export async function GET(
 
       // Combine module and sections data
       const result = {
-        ...module,
+        ...thisModule,
         sections: sections
       };
 
