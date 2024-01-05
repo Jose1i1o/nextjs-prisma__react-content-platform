@@ -5,9 +5,10 @@ import { useCallback, useEffect, useState } from "react";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { useUserStore } from "@/app/context/store";
 
+const { currentUser, setCurrentUser } = useUserStore();
+
 export const SetToCompleteButton = async() => {
   
-  const { currentUser, setCurrentUser } = useUserStore();
 
   const updateSection = async () => {
 
