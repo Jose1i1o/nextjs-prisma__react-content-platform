@@ -6,7 +6,7 @@ export const createAccordionItems = (
     headerSliders: ComponentType<{ blockTitle: string }>[],
     bodySliders: ComponentType<{}>[]
 ): AccordionItem[] => {
-    return sections.map((section, index) => ({
+    return sections?.map((section, index) => ({
         id: section.id,
         title: headerSliders[index] ? React.createElement(headerSliders[index], { blockTitle: section.title }) : null,
         content: bodySliders[index] ? React.createElement(bodySliders[index]) : null,

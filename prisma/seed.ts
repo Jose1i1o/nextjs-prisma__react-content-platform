@@ -99,7 +99,7 @@ const modules = [
         completionStatus: moduleData.completionStatus,
         progress: moduleData.progress,
         sections: {
-          create: moduleData.sections.map((section) => ({
+          create: moduleData.sections?.map((section) => ({
             title: section.title,
             completionStatus: section.completionStatus,
             points: section.points,

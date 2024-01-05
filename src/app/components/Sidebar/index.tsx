@@ -38,7 +38,6 @@ type SidebarProps = {
 export const Sidebar: FC<SidebarProps> = ({ show, moduleInfo }) => {
     
     const sections = moduleInfo?.sections;
-    console.log(sections)
     
     const sidebarClass = `bg-neutral-950 w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40 h-screen overflow-y-auto ${show ? ' ml-0' : ' ml-[-250px] md:ml-0'}`;
 

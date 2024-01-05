@@ -7,6 +7,7 @@ export async function getSession() {
 }
 
 export default async function getCurrentUser() {
+  
   try {
     const session = await getSession();
     if (!session?.user?.email) return null;
@@ -15,6 +16,8 @@ export default async function getCurrentUser() {
         email: session.user.email as string
       }
     });
+    console.log('db user', currentUser);
+    
     if (!currentUser) return null;
     return {
       ...currentUser,
@@ -26,4 +29,9 @@ export default async function getCurrentUser() {
   catch (error: any) {
     return null;
   }
+}
+
+export async function getServerSideProps() {
+	const currentUser = await getCurrentUser();
+	return { props: { currentUser } };
 }

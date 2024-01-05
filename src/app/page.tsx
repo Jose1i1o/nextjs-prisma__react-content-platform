@@ -16,11 +16,11 @@ const Bundlers = dynamic(() => import("./components/Pages/Bundlers/Bundlers"));
 
 const Intro = dynamic(() => import("./components/Pages/Intro/Intro"));
 
-const UseState = dynamic(() => import("./components/Pages/UseState/UseState"));
+// const UseState = dynamic(() => import("./components/Pages/UseState/UseState"));
 
-const PropDrilling = dynamic(
-	() => import("./components/Pages/PropDrilling/PropDrilling")
-);
+// const PropDrilling = dynamic(
+// 	() => import("./components/Pages/PropDrilling/PropDrilling")
+// );
 
 const Home = () => {
 	const [moduleInfo, setModuleInfo] = useState();
@@ -37,7 +37,6 @@ const Home = () => {
 		try {
 				const response = await fetch(`/api/modules?category=${category}`);
 				const data = await response.json();
-				console.log("data", data);
 				
 				setModuleInfo(data);
 		} catch (error) {

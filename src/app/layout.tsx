@@ -9,7 +9,6 @@ import ToasterProvider from "./components/shared/Toasters/ToasterProvider";
 import LoginModal from "./components/Modal/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import { Providers } from "./providers";
-import { theme } from "@/theme/theme";
 
 export const metadata: Metadata = {
 	title: "AIT Documentation",
