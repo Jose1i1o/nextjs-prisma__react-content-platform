@@ -1,8 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { useCategory } from "./useCategory";
+import { useModuleStore } from "../context/store";
 
 export const useFetchModules = () => {
-  const [moduleInfo, setModuleInfo] = useState(null);
+  
+  const { currentModule, setCurrentModule } = useModuleStore();
+  
   const [isLoading, setIsLoading] = useState(false);
   const category = useCategory();
 
@@ -11,7 +14,7 @@ export const useFetchModules = () => {
     try {
       const response = await fetch(`/api/modules?category=${category}`);
       const data = await response.json();
-      setModuleInfo(data);
+      setCurrentModule(data);
     } catch (error) {
       console.error("Error fetching modules:", error);
     }
@@ -24,5 +27,5 @@ export const useFetchModules = () => {
     }
   }, [category, fetchModules]);
 
-  return { isLoading, moduleInfo };
+  return { isLoading, currentModule };
 };

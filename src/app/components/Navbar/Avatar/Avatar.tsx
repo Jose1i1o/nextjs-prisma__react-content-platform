@@ -1,6 +1,6 @@
 "use client";
 import React, { FC } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 type AvatarProps = {
 	src?: string | null | undefined;

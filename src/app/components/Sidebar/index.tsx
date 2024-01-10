@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, useEffect } from 'react';
+import React, { FC, use, useEffect } from 'react';
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
 import { FaCircle } from "react-icons/fa";
@@ -43,12 +43,8 @@ type SidebarProps = {
 
 export const Sidebar: FC<SidebarProps> = ({ show, moduleInfo }) => {
 
-    const { currentModule, setCurrentModule } = useModuleStore();
-
     useEffect(() => {
-        setCurrentModule(moduleInfo);
-    }, [moduleInfo, currentModule]);
-    
+    }, [moduleInfo]);
     
     const sections = moduleInfo?.sections;
     

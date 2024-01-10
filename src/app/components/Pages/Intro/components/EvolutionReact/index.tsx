@@ -3,7 +3,7 @@ import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { StyledFirstLetterInParagraph } from '@/app/components/shared/StyledFirstLetterInParagraph';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useUserStore } from '@/app/context/store';
 
 export const HeaderSliderEvolutionReact: FC<{ blockTitle: string }> = ({ blockTitle }) => {

@@ -4,7 +4,7 @@ import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIco
 import { BsTerminal } from 'react-icons/bs';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 import { useUserStore } from '@/app/context/store';
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export const HeaderSliderWebpack: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (

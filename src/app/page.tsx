@@ -29,16 +29,16 @@ const Intro = dynamic(() => import("./components/Pages/Intro/Intro"));
 
 const Home = () => {
 	const [showSidebar, setShowSidebar] = useState(false);
-  const { isLoading, moduleInfo } = useFetchModules();
+  const { isLoading, currentModule } = useFetchModules();
   const category = useCategory(); 
 
 	return (
 		<ClientOnly>
 				<Container>
 						<div style={{ backgroundColor: theme.colors.black }} className="flex flex-col md:flex-row gap-4">
-								{moduleInfo && <Sidebar show={showSidebar} setter={setShowSidebar} moduleInfo={moduleInfo} />}
+								{currentModule && <Sidebar show={showSidebar} setter={setShowSidebar} moduleInfo={currentModule} />}
 								<div className="flex flex-col gap-4 w-full">
-										{isLoading ? <div>Loading...</div> : renderComponent(category, moduleInfo)}
+										{isLoading ? <div>Loading...</div> : renderComponent(category, currentModule)}
 								</div>
 						</div>
 				</Container>

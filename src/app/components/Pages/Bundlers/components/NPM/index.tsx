@@ -4,7 +4,7 @@ import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIco
 import { Accordion, AccordionItem } from '@nextui-org/react';
 import { useUserStore } from '@/app/context/store';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 export const HeaderSliderNPM: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
