@@ -28,7 +28,7 @@ export async function GET(
     });
     
     if (thisModule) {
-      // Fetch sections for the retrieved module
+      // Fetch sections for the retrieved module and user progress
       const sections = await prisma.section.findMany({
         where: {
           moduleId: thisModule.id
@@ -40,7 +40,14 @@ export async function GET(
           id: true,
           title: true,
           completionStatus: true,
-          points: true
+          points: true,
+          userProgress: {
+            select: {
+              userId: true,
+              sectionId: true,
+              completionStatus: true
+            }
+          },
         }
       });
 

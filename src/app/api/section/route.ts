@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function PUT(request: Request) {
   const body = await request.json();
+  
   const { userId, sectionId, completionStatus } = body;
 
   try {
@@ -23,7 +24,11 @@ export async function PUT(request: Request) {
       }
     });
 
-    return NextResponse.json(updatedSectionProgress);
+    if (!updatedSectionProgress) {
+      throw new Error("Failed to update section progress");
+    }
+
+    return NextResponse.json({ success: updatedSectionProgress });
   } catch (error) {
     console.error("Failed to update section progress:", error);
     return NextResponse.json({ error: "Error updating section progress" });

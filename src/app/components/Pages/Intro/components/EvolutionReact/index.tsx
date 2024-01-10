@@ -3,7 +3,8 @@ import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { StyledFirstLetterInParagraph } from '@/app/components/shared/StyledFirstLetterInParagraph';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
-import { Header } from 'next/dist/lib/load-custom-routes';
+import Image from "next/image";
+import { useUserStore } from '@/app/context/store';
 
 export const HeaderSliderEvolutionReact: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
@@ -13,12 +14,19 @@ export const HeaderSliderEvolutionReact: FC<{ blockTitle: string }> = ({ blockTi
 	)
 }
 
-export const BodySliderEvolutionReact = () => {
+export const BodySliderEvolutionReact = ({ moduleInfo: {id} }: any) => {
+  
+  const { currentUser } = useUserStore();
+  const sectionId = id;
+  
   return (
     <div className="content p-4">
-      <img
+      <Image
         src="https://res.cloudinary.com/dtvp3u4ql/image/upload/v1694708781/react_page/pv26w69j9quzpskpg238.gif"
         alt="React Logo Animated Gif"
+        width={100}
+        height={100}
+        layout='responsive'
       />
       <StyledFirstLetterInParagraph>
         React, also known as React.js or ReactJS, is a widely-used{" "}
@@ -92,7 +100,7 @@ export const BodySliderEvolutionReact = () => {
         application, React's versatility and community support make it an
         excellent choice for your web development journey.
       </p>
-      <SetToCompleteButton />
+      <SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
     </div>
   )
 }

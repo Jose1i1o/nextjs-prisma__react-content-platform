@@ -2,8 +2,9 @@ import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { Accordion, AccordionItem } from '@nextui-org/react';
-
+import { useUserStore } from '@/app/context/store';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
+import Image from "next/image";
 
 export const HeaderSliderNPM: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
@@ -13,7 +14,11 @@ export const HeaderSliderNPM: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	)
 }
 
-export const BodySliderNPM = () => {
+export const BodySliderNPM = ({ moduleInfo: {id} }: any) => {
+  
+  const { currentUser } = useUserStore();
+  const sectionId = id;
+
   return (
 		<>
 		<Accordion selectionMode="multiple" variant="splitted">
@@ -56,10 +61,13 @@ export const BodySliderNPM = () => {
 						avoiding conflicts between versions.
 					</p>
 					<figure className="flex flex-col items-center p-4">
-						<img
+						<Image
 							src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_550/v1/react_page/ms0vfpebriiszmlf7ql0"
 							alt="Package Dependency Graph"
-							className="h-25 w-50 mx-auto"
+							// className="h-25 w-50 mx-auto"
+							width={50}
+							height={25}
+							layout='responsive'
 						/>
 						<figcaption className="text-center text-gray-700 pb-2">
 							Image: Package Dependency Graph
@@ -93,10 +101,13 @@ export const BodySliderNPM = () => {
 						Downloads metadata for all required dependencies.
 					</li>
 					<figure className="flex flex-col items-center p-4">
-						<img
+						<Image
 							src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_550/v1/react_page/cnbpiqpdd6byvc40pfdl"
 							alt="Metadata download process"
-							className="h-25 w-50 mx-auto"
+							// className="h-25 w-50 mx-auto"
+							width={50}
+							height={25}
+							layout='responsive'
 						/>
 						<figcaption className="text-center text-gray-700 pb-2">
 							Image: Metadata download process
@@ -124,10 +135,13 @@ export const BodySliderNPM = () => {
 					and package-lock.json files help manage dependencies.
 				</p>
 				<figure className="flex flex-col items-center p-4">
-					<img
+					<Image
 						src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_250/v1/react_page/mnig3bnafljfupjech09"
 						alt="Webpack Dependency Graph"
-						className="h-25 w-50 mx-auto"
+						// className="h-25 w-50 mx-auto"
+						width={50}
+						height={25}
+						layout='responsive'
 					/>
 					<figcaption className="text-center text-gray-700 pb-2">
 						Image: Semantic versioning of packages
@@ -160,14 +174,20 @@ export const BodySliderNPM = () => {
 					as yarn and pnpm.
 				</p>
 				<div className="flex align-left">
-					<img
+					<Image
 						src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_150/v1/react_page/smyfxmvwjpmnh49ugul8"
 						alt="Metadata download process"
+						width={50}
+						height={25}
+						layout='responsive'
 					/>
-					<img
+					<Image
 						src="https://res.cloudinary.com/dtvp3u4ql/image/upload/f_auto,q_auto,h_100/v1/react_page/ad3xqed08h9vxszkwthf"
 						alt="Metadata download process"
 						className="m-5"
+						width={50}
+						height={25}
+						layout='responsive'
 					/>
 				</div>
 			</AccordionItem>
@@ -248,7 +268,6 @@ export const BodySliderNPM = () => {
 				</p>
 			</AccordionItem>
 		</Accordion>
-		<SetToCompleteButton />
-		</>
+    <SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />		</>
   )
 }

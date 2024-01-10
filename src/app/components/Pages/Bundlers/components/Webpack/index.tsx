@@ -3,6 +3,8 @@ import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { BsTerminal } from 'react-icons/bs';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
+import { useUserStore } from '@/app/context/store';
+import Image from "next/image";
 
 export const HeaderSliderWebpack: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
@@ -12,7 +14,11 @@ export const HeaderSliderWebpack: FC<{ blockTitle: string }> = ({ blockTitle }) 
 	)
 }
 
-export const BodySliderWebpack = () => {
+export const BodySliderWebpack = ({ moduleInfo: {id} }: any) => {
+  
+  const { currentUser } = useUserStore();
+  const sectionId = id;
+	
   return (
 		<>
 			<div className="content p-4">
@@ -30,10 +36,13 @@ export const BodySliderWebpack = () => {
 					JavaScript features not supported in older browsers.
 				</p>
 				<figure className="flex flex-col items-center p-4">
-					<img
+					<Image
 						src="https://res.cloudinary.com/dtvp3u4ql/image/upload/v1693993470/react_page/r2pocbu1n6krsrdge1ua.webp"
 						alt="Webpack Dependency Graph"
-						className="h-25 w-50 mx-auto"
+						// className="h-25 w-50 mx-auto"
+						width={50}
+						height={25}
+						layout='responsive'
 					/>
 					<figcaption className="text-center text-gray-700 pb-2">
 						Image: Webpack Dependency Graph
@@ -109,7 +118,7 @@ export const BodySliderWebpack = () => {
 					.
 				</p>
 			</div>
-			<SetToCompleteButton />
+			<SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
 		</>
 	
   )

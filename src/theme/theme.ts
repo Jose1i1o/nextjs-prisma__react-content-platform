@@ -8,6 +8,7 @@ export const theme = {
 		warning: '#6A451',
 		white: '#ffffff',
 		grey: '#999',
+		black: '#000413',
 		textPrimary: '#31475b',
 		textSecondary: '#31475b',
 		placeholderColor: '#999',

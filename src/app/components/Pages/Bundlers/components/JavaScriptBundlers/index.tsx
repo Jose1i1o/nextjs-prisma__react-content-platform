@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
+import { useUserStore } from '@/app/context/store';
 
 
 export const HeaderUnderstandingJavaScriptBundlersAndFrameworks: FC<{ blockTitle: string }> = ({ blockTitle }) => {
@@ -12,7 +13,11 @@ export const HeaderUnderstandingJavaScriptBundlersAndFrameworks: FC<{ blockTitle
 	)
 }
 
-export const BodyUnderstandingJavaScriptBundlersAndFrameworks = () => {
+export const BodyUnderstandingJavaScriptBundlersAndFrameworks = ({ moduleInfo: {id} }: any) => {
+  
+  const { currentUser } = useUserStore();
+  const sectionId = id;
+
   return (
 		<div className="content p-4">
 			<h3 className="text-gray-700">
@@ -45,7 +50,7 @@ export const BodyUnderstandingJavaScriptBundlersAndFrameworks = () => {
 					it easier to include them in your project.
 				</li>
 			</ul>
-			<SetToCompleteButton />
+			<SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
 		</div>
 	
   )

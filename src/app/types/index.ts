@@ -32,7 +32,7 @@ export type ModuleDescription = {
   map(arg0: (section: any, index: any) => { 
     id: any; 
     title: import("react").ReactElement<{ blockTitle: any; }, string | import("react").JSXElementConstructor<any>>; 
-    content: import("react").DOMElement<import("react").DOMAttributes<Element>, Element>; 
+    content: React.ReactNode; 
   }): accordionItemProps[];
   ModuleTitle?: string;
   title: string;

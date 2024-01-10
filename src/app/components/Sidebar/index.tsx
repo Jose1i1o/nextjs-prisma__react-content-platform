@@ -1,10 +1,12 @@
-import React, { FC } from 'react';
+'use client'
+
+import React, { FC, useEffect } from 'react';
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
 import { FaCircle } from "react-icons/fa";
 import { theme } from '@/theme/theme';
 import Xarrow from "react-xarrows";
-import { log } from 'console';
+import { useModuleStore } from '@/app/context/store';
 
 import {
     MenuContainer,
@@ -14,12 +16,16 @@ import {
     ProgressBarContainer,
     ProgressBar,
 } from './MenuTitle.styles';
-
 type SectionType = {
     id: string;
     title: string;
     completionStatus: string;
     points: number;
+    userProgress: {
+        completionStatus: string;
+        sectionId: string;
+        userId: string;
+    }[]
 };
 
 type SidebarProps = {
@@ -36,25 +42,39 @@ type SidebarProps = {
 };
 
 export const Sidebar: FC<SidebarProps> = ({ show, moduleInfo }) => {
+
+    const { currentModule, setCurrentModule } = useModuleStore();
+
+    useEffect(() => {
+        setCurrentModule(moduleInfo);
+    }, [moduleInfo, currentModule]);
+    
     
     const sections = moduleInfo?.sections;
     
-    const sidebarClass = `bg-neutral-950 w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40 h-screen overflow-y-auto ${show ? ' ml-0' : ' ml-[-250px] md:ml-0'}`;
+    const sidebarClass = `w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40 h-screen overflow-y-auto ${show ? ' ml-0' : ' ml-[-250px] md:ml-0'}`;
 
     const findNextSection = (currentId: string) => {
         const currentIndex = sections.findIndex(section => section.id === currentId);
         return currentIndex >= 0 && currentIndex < sections.length - 1 ? sections[currentIndex + 1] : null;
     };
 
+    const checkIfSectionIsCompleted = (sectionId: string) => {
+        const section = sections.find(section => section.id === sectionId);
+        return section?.userProgress[0]?.completionStatus;
+    }
+
     const MenuItem = ({ section }: { section: SectionType }) => {
         const nextItemId = findNextSection(section.id);
+        const userProgress = checkIfSectionIsCompleted(section.id);
+        
         const currentIndex = sections.findIndex(section => section.id === nextItemId?.id);
 
         const nextIcon = {
             completed: <FaCheck color={theme.colors.primary} size={20} />,
             inProgress: <FaCircleCheck color={theme.colors.primary} size={20} />,
             notCompleted: <FaCircle color={theme.colors.grey} size={18} />,
-        }[nextItemId?.completionStatus || 'notCompleted'];
+        }[userProgress || 'notCompleted'];
 
         return (
             <div style={{ margin: '10px' }}>
@@ -104,7 +124,7 @@ export const Sidebar: FC<SidebarProps> = ({ show, moduleInfo }) => {
       );
 
     return (
-        <div className={sidebarClass}>
+        <div style={{ backgroundColor: theme.colors.black }} className={sidebarClass}>
             <div className="flex flex-col">
                 <MenuTitle {...moduleInfo} />
                 {sections?.map((section) => (

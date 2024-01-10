@@ -2,8 +2,8 @@
 
 import React, { FC } from "react";
 import { 
-	HeaderSliderReactDocumentary,
-	BodySliderReactDocumentary,
+	HeaderSliderIntroVideo,
+	BodySliderIntroVideo,
 	HeaderUnderstandingJavaScriptBundlersAndFrameworks,
 	BodyUnderstandingJavaScriptBundlersAndFrameworks,
 	HeaderSliderWebpack,
@@ -18,22 +18,35 @@ import {
 	BodySliderNPM,
  } from "./components";
 import AccordionGeneric from "../../shared/Accordion/AccordionGeneric";
-import { ModuleInfo } from "@/app/types";
+import { ModuleInfo, Section } from "@/app/types";
 import { createAccordionItems } from "../../shared/Accordion/CreateAccordionItems";
 
 const Bundlers: FC<ModuleInfo> = ({ moduleInfo }) => {
 
-  const { sections } = moduleInfo ? moduleInfo : { sections: [] };
+	const { sections } = moduleInfo ? moduleInfo : { sections: [] };
 	
 
-  const headerSliders = [HeaderSliderReactDocumentary, HeaderUnderstandingJavaScriptBundlersAndFrameworks, HeaderSliderWebpack, HeaderSliderVite, HeaderSliderOtherBundlers, HeaderSliderOtherFrameworks, HeaderSliderNPM];
-  const bodySliders = [BodySliderReactDocumentary, BodyUnderstandingJavaScriptBundlersAndFrameworks, BodySliderWebpack, BodySliderVite, BodySliderOtherBundlers, BodySliderOtherFrameworks, BodySliderNPM];
+	const headerSliders = [HeaderSliderIntroVideo, HeaderUnderstandingJavaScriptBundlersAndFrameworks, HeaderSliderWebpack, HeaderSliderVite, HeaderSliderOtherBundlers, HeaderSliderOtherFrameworks, HeaderSliderNPM];
+	
+	const bodySliders = sections?.map((_, index) => {
+		const BodyComponent = [
+			BodySliderIntroVideo, 
+			BodyUnderstandingJavaScriptBundlersAndFrameworks, 
+			BodySliderWebpack, 
+			BodySliderVite, 
+			BodySliderOtherBundlers, 
+			BodySliderOtherFrameworks, 
+			BodySliderNPM
+		][index];
 
-  const accordionItems = createAccordionItems(sections, headerSliders, bodySliders);
-  
-    return (
-      <AccordionGeneric accordionItems={accordionItems} />
-    );
-  }
+		return BodyComponent;
+	});
+	
+	const accordionItems = createAccordionItems(sections, headerSliders, bodySliders);
+	
+	return (
+		<AccordionGeneric accordionItems={accordionItems} />
+	);
+}
 
 export default Bundlers;

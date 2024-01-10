@@ -26,6 +26,7 @@ type ButtonProps = {
   size?: "small" | "medium" | "large";
   style?: React.CSSProperties;
   children?: ReactNode;
+  currentUser?: {};
 };
 
 const StyledButton = styled.button<ButtonProps>`
@@ -80,6 +81,7 @@ const Button: FC<ButtonProps> = ({
   size = "medium",
   style,
   children,
+  currentUser
 }) => {
   const isLoading = loading && !disabled;
 
@@ -100,6 +102,7 @@ const Button: FC<ButtonProps> = ({
       activeStyle={activeStyle}
       className={className}
       style={style}
+      currentUser={currentUser}
     >
       {Array.isArray(icon) ? (
         icon.map((IconComponent, index) => (

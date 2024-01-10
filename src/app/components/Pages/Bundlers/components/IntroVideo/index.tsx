@@ -2,8 +2,9 @@ import React, { FC } from 'react'
 import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
+import { useUserStore } from '@/app/context/store';
 
-export const HeaderSliderReactDocumentary: FC<{ blockTitle: string }> = ({ blockTitle }) => {
+export const HeaderSliderIntroVideo: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
     <>
 		<AccordionHeader>
@@ -13,7 +14,11 @@ export const HeaderSliderReactDocumentary: FC<{ blockTitle: string }> = ({ block
 	)
 }
 
-export const BodySliderReactDocumentary = () => {
+export const BodySliderIntroVideo = ({ moduleInfo: {id} }: any) => {
+  
+  const { currentUser } = useUserStore();
+  const sectionId = id;
+
   return (
     <>
     <iframe
@@ -25,7 +30,7 @@ export const BodySliderReactDocumentary = () => {
       allowFullScreen
       style={{ maxWidth: '100%' }}
     ></iframe>
-    <SetToCompleteButton  />
+    <SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
     </>
   );
 };

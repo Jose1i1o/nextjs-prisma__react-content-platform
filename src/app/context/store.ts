@@ -1,22 +1,54 @@
 import { create } from 'zustand';
-import getCurrentUser from '../actions/getCurrentUser';
 
 interface UserStore {
   currentUser: any;
   setCurrentUser: (user: any) => void;
   clearCurrentUser: () => void;
-  fetchCurrentUser: () => Promise<void>;
+}
+
+interface ModuleStore {
+  currentModule: any;
+  setCurrentModule: (module: any) => void;
+  updateCurrentModule: (module: any) => void;
+  clearModule: () => void;
 }
 
 export const useUserStore = create<UserStore>((set, get) => ({
   currentUser: null,
   setCurrentUser: (user: any) => set({ currentUser: user }),
-  fetchCurrentUser: async () => {
-    const response = await getCurrentUser();
-    if (response) {
-      set({ currentUser: response });
-    }
-  },
   clearCurrentUser: () => set({ currentUser: null })
 }));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const useModuleStore = create<ModuleStore>((set, get) => ({
+  currentModule: null,
+  setCurrentModule: (module: any) => set({ currentModule: module }),
+  updateCurrentModule: async () => {
+    console.log('updating module');
+    
+    try {
+      const response = await (fetch('/api/modules'));
+      const newModuleData = await response.json();      
+      set({ currentModule: newModuleData });
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  clearModule: () => set({ currentModule: null })
+}));

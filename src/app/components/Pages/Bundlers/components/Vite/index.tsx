@@ -3,6 +3,7 @@ import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { BsTerminal } from 'react-icons/bs';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
+import { useUserStore } from '@/app/context/store';
 
 
 export const HeaderSliderVite: FC<{ blockTitle: string }> = ({ blockTitle }) => {
@@ -13,7 +14,11 @@ export const HeaderSliderVite: FC<{ blockTitle: string }> = ({ blockTitle }) => 
 	)
 }
 
-export const BodySliderVite = () => {
+export const BodySliderVite = ({ moduleInfo: {id} }: any) => {
+  
+  const { currentUser } = useUserStore();
+  const sectionId = id;
+
   return (
     <>
 			<div className="content p-4">
@@ -83,7 +88,7 @@ export const BodySliderVite = () => {
 					</a>
 					.
 				</p>
-				<SetToCompleteButton />
+				<SetToCompleteButton sectionId={sectionId} currentUser={currentUser} />
 			</div>
 		</>
   )
