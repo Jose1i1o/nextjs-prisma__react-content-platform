@@ -27,6 +27,7 @@ type ButtonProps = {
   style?: React.CSSProperties;
   children?: ReactNode;
   currentUser?: {};
+  sectionId?: string;
 };
 
 const StyledButton = styled.button<ButtonProps>`
@@ -81,7 +82,8 @@ const Button: FC<ButtonProps> = ({
   size = "medium",
   style,
   children,
-  currentUser
+  currentUser,
+  sectionId
 }) => {
   const isLoading = loading && !disabled;
 
@@ -103,6 +105,7 @@ const Button: FC<ButtonProps> = ({
       className={className}
       style={style}
       currentUser={currentUser}
+      sectionId={sectionId}
     >
       {Array.isArray(icon) ? (
         icon.map((IconComponent, index) => (

@@ -80,6 +80,7 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, se
       tooltip='Next'
       ariaLabel='Next'
       currentUser={currentUser}
+      sectionId={sectionId}
     />
   );
 }
