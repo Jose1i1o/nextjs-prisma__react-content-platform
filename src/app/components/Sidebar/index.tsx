@@ -6,7 +6,7 @@ import { FaCheck } from "react-icons/fa6";
 import { FaCircle } from "react-icons/fa";
 import { theme } from '@/theme/theme';
 import Xarrow from "react-xarrows";
-import { useModuleStore } from '@/app/context/store';
+import { useUserStore } from '@/app/context/store';
 
 import {
     MenuContainer,
@@ -16,6 +16,8 @@ import {
     ProgressBarContainer,
     ProgressBar,
 } from './MenuTitle.styles';
+
+
 type SectionType = {
     id: string;
     title: string;
@@ -28,28 +30,46 @@ type SectionType = {
     }[]
 };
 
+type MenuTitleProps = {
+    moduleItem: string;
+    title: string;
+    completionStatus: string;
+    userModuleProgress: number;
+};
+
+type ModuleType = {
+    id: string;
+    moduleTitle: string;
+    moduleItem: string;
+    title: string;
+    completionStatus: string;
+    progress: number;
+    sections: SectionType[];
+    userModuleProgress: {
+        completionStatus: string;
+        moduleId: string;
+        progress: number;
+        userId: string;
+    }[]
+};
+
 type SidebarProps = {
     show: boolean;
     setter: (show: boolean) => void;
-    moduleInfo:         {
-        moduleTitle: string;
-        moduleItem: string;
-        title: string;
-        completionStatus: string;
-        progress: number;
-        sections: SectionType[];
-    };
+    moduleInfo: ModuleType;
 };
 
-export const Sidebar: FC<SidebarProps> = ({ show, moduleInfo }) => {
-
+export const Sidebar: FC<SidebarProps> = ({ show, moduleInfo }) => {    
+    const { currentUser } = useUserStore();
+    
     useEffect(() => {
     }, [moduleInfo]);
     
     const sections = moduleInfo?.sections;
+    const userModuleProgress = currentUser === null ? 0 : moduleInfo?.progress;
     
     const sidebarClass = `w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40 h-screen overflow-y-auto ${show ? ' ml-0' : ' ml-[-250px] md:ml-0'}`;
-
+    
     const findNextSection = (currentId: string) => {
         const currentIndex = sections.findIndex(section => section.id === currentId);
         return currentIndex >= 0 && currentIndex < sections.length - 1 ? sections[currentIndex + 1] : null;
@@ -57,12 +77,15 @@ export const Sidebar: FC<SidebarProps> = ({ show, moduleInfo }) => {
 
     const checkIfSectionIsCompleted = (sectionId: string) => {
         const section = sections.find(section => section.id === sectionId);
-        return section?.userProgress[0]?.completionStatus;
+        
+        const isSectionCompleted = section?.userProgress?.completionStatus === 'completed';
+        const checkSectionStatus = isSectionCompleted ? 'completed' : 'notCompleted';
+        return checkSectionStatus;
     }
 
     const MenuItem = ({ section }: { section: SectionType }) => {
         const nextItemId = findNextSection(section.id);
-        const userProgress = checkIfSectionIsCompleted(section.id);
+        const userProgress = currentUser === null ? 'notCompleted' : checkIfSectionIsCompleted(section.id);
         
         const currentIndex = sections.findIndex(section => section.id === nextItemId?.id);
 
@@ -105,24 +128,24 @@ export const Sidebar: FC<SidebarProps> = ({ show, moduleInfo }) => {
         );
     };
 
-    const MenuTitle = ({ moduleItem, title, completionStatus, progress }: SidebarProps['moduleInfo']) => (
-        <MenuContainer>
-          <ModuleTitle>{moduleItem}</ModuleTitle>
-          <CourseTitle>{title}</CourseTitle>
-            <ProgressInfo>
+    const MenuTitle:FC<MenuTitleProps> = ({ moduleItem, title, completionStatus, userModuleProgress }) => (
+    <MenuContainer>
+        <ModuleTitle>{moduleItem}</ModuleTitle>
+        <CourseTitle>{title}</CourseTitle>
+        <ProgressInfo>
             {/* <span>{completionStatus}</span> */}
-            <span>{progress}%</span>
-          </ProgressInfo>
-          <ProgressBarContainer>
-            <ProgressBar onProgress={progress ?? 0} />
-          </ProgressBarContainer>
-        </MenuContainer>
-      );
+            <span>{userModuleProgress}%</span>
+        </ProgressInfo>
+        <ProgressBarContainer>
+            <ProgressBar onProgress={userModuleProgress} />
+        </ProgressBarContainer>
+    </MenuContainer>
+);
 
     return (
         <div style={{ backgroundColor: theme.colors.black }} className={sidebarClass}>
             <div className="flex flex-col">
-                <MenuTitle {...moduleInfo} />
+                <MenuTitle {...moduleInfo} userModuleProgress={userModuleProgress}/>
                 {sections?.map((section) => (
                     <div key={section.id}>
                         <MenuItem key={section?.id} section={section} />

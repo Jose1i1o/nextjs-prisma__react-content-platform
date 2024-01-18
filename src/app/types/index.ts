@@ -2,6 +2,12 @@ import { User } from "@prisma/client";
 import { ModuleTitle } from '../components/Sidebar/MenuTitle.styles';
 import React, { ReactElement } from "react";
 
+export enum completionTypes {
+  completed = "completed",
+  inProgress = "inProgress",
+  notCompleted = "notCompleted",
+};
+
 export type SafeUser = Omit<
   User,
   "createdAt" | "updatedAt" | "emailVerified"

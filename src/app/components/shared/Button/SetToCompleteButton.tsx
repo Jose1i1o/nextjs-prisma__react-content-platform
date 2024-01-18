@@ -1,9 +1,10 @@
 import { GrNext } from "react-icons/gr";
 import { theme } from '@/theme/theme';
 import Button from "./Button";
-import { FC, useCallback } from "react";
-import toast from "react-hot-toast";
+import { FC, use, useCallback, useEffect } from "react";
+import { toast } from "sonner";
 import { useModuleStore } from "@/app/context/store";
+import { completionTypes } from "@/app/types";
 
 interface AccountUser {
   currentUser: {
@@ -25,11 +26,19 @@ type Section = {
 
 export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, sectionId }) => {
 
-  const { updateCurrentModule } = useModuleStore();  
+  console.log('currentUser', currentUser);
+  console.log('sectionId', sectionId);
+  
 
+  const { currentModule, updateCurrentModule } = useModuleStore();
+  
   const updateSection = useCallback(async () => {
     const userId = currentUser?.id;
-    const completionStatus = "completed";
+    console.log('userId', userId);
+    
+    const moduleId = currentModule?.id;
+    const completionStatus = completionTypes.completed;
+    const sectionPoints = currentModule?.sections.find((section: any) => section.id === sectionId)?.points;
 
     try {
       const response = await fetch('/api/section', {
@@ -41,6 +50,8 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, se
           userId,
           sectionId,
           completionStatus,
+          sectionPoints,
+          moduleId
         }),
       });
 
@@ -49,6 +60,7 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, se
       }
 
       const data = await response.json();
+      
       const { success, error } = data;
       
       if (success && !error) {
@@ -56,13 +68,13 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, se
         toast.success('Section completed!');
       } 
       if (error && !success) {
-        toast.error('Error. Failed to update section progress');
+        toast.warning('Failed to update section progress. Remember you need to be logged in first.');
       }
     } catch (error) {
-      toast.error('Error. Failed to update section progress');
+      toast.error('Failed to update section progress. Remember you need to be logged in first.');
       console.error('Error updating section', error);
     }
-  }, [currentUser, sectionId, updateCurrentModule]);
+  }, [sectionId, updateCurrentModule]);
 
   return (
     <Button 

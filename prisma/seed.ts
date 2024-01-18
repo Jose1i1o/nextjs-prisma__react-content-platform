@@ -1,4 +1,6 @@
+import { completionTypes } from '../src/app/types'
 import { PrismaClient } from '@prisma/client'
+
 
 const prisma = new PrismaClient();
 
@@ -13,62 +15,67 @@ async function main() {
   await prisma.section.deleteMany();
   await prisma.user.deleteMany();
 
-	const completionTypes = {
-    completed: "completed",
-    inProgress: "inProgress",
-    notCompleted: "notCompleted",
-};
+  const totalModulePoints = 100;
+  const sectionCountPerModule = {
+    "Bundlers": 7,
+    "Intro": 4,
+  };
 
-const modules = [
+  const pointsAllocatedPerSection = {
+    "Bundlers": totalModulePoints / sectionCountPerModule["Bundlers"],
+    "Intro": totalModulePoints / sectionCountPerModule["Intro"],
+  };
+
+  const modules = [
     {
       moduleTitle: "Bundlers",
       moduleItem: "module 0",
       title: "Bundlers",
-      completionStatus: completionTypes.inProgress,
-      progress: 100,
+      completionStatus: completionTypes.notCompleted,
+      progress: 0,
       reviews: [],
       userModuleProgress: [],
       sections: [
           {
               title: "Introduction Video",
-              completionStatus: completionTypes.completed,
-              points: 5,
+              completionStatus: completionTypes.notCompleted,
+              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "JavaScript Bundlers",
-              completionStatus: completionTypes.completed,
-              points: 10,
+              completionStatus: completionTypes.notCompleted,
+              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "Webpack",
-              completionStatus: completionTypes.completed,
-              points: 10,
+              completionStatus: completionTypes.notCompleted,
+              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "Vite",
-              completionStatus: completionTypes.inProgress,
-              points: 10,
+              completionStatus: completionTypes.notCompleted,
+              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "Other Bundlers",
               completionStatus: completionTypes.notCompleted,
-              points: 10,
+              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "Other Frameworks",
               completionStatus: completionTypes.notCompleted,
-              points: 10,
+              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "NPM and others",
               completionStatus: completionTypes.notCompleted,
-              points: 10,
+              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           }
       ]
@@ -78,37 +85,37 @@ const modules = [
       moduleItem: "module 1",
       title: "Introduction to React",
       completionStatus: completionTypes.notCompleted,
-      progress: 50,
+      progress: 0,
       reviews: [],
       userModuleProgress: [],
       sections: [
           {
               title: "React. The Film",
               completionStatus: completionTypes.notCompleted,
-              points: 10,
+              points: pointsAllocatedPerSection.Intro,
               userProgress: []
           },
           {
               title: "The Evolution of React.js",
               completionStatus: completionTypes.notCompleted,
-              points: 5,
+              points: pointsAllocatedPerSection.Intro,
               userProgress: []
           },
           {
               title: "Playground: Testing your React skills",
               completionStatus: completionTypes.notCompleted,
-              points: 8,
+              points: pointsAllocatedPerSection.Intro,
               userProgress: []
           },
           {
               title: "Introduction Test Exercises",
               completionStatus: completionTypes.notCompleted,
-              points: 12,
+              points: pointsAllocatedPerSection.Intro,
               userProgress: []
           }
       ]
-    }
-];
+    },
+  ];
 
 
   const createModules = modules.map(async (moduleData) => {

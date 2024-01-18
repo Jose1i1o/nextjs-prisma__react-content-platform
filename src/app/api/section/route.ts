@@ -4,7 +4,11 @@ import { NextResponse } from 'next/server';
 export async function PUT(request: Request) {
   const body = await request.json();
   
-  const { userId, sectionId, completionStatus } = body;
+  const { userId, sectionId, completionStatus, sectionPoints, moduleId } = body;
+
+  console.log('userId:', userId);
+  console.log('sectionId:', sectionId);
+  
 
   try {
     const updatedSectionProgress = await prisma.userSectionProgress.upsert({
@@ -15,7 +19,7 @@ export async function PUT(request: Request) {
         }
       },
       update: {
-        completionStatus: completionStatus
+        completionStatus: completionStatus,
       },
       create: {
         userId: userId,
@@ -25,12 +29,36 @@ export async function PUT(request: Request) {
     });
 
     if (!updatedSectionProgress) {
-      throw new Error("Failed to update section progress");
+      throw new Error("Failed to update section progress. Remember you need to be logged in first.");
     }
 
-    return NextResponse.json({ success: updatedSectionProgress });
+    const updatedModuleProgress = await prisma.userModuleProgress.upsert({
+      where: {
+        userId_moduleId: {
+          userId: userId,
+          moduleId: moduleId,
+        }
+      },
+      update: {
+        progress: {
+          increment: sectionPoints
+        }
+      },
+      create: {
+        userId: userId,
+        moduleId: moduleId,
+        completionStatus: completionStatus,
+        progress: sectionPoints
+      }
+    });    
+
+    return NextResponse.json({ 
+        success: true,
+        updatedSectionProgress,
+        updatedModuleProgress
+     });
   } catch (error) {
-    console.error("Failed to update section progress:", error);
+    console.error("Failed to update section progress. Remember you need to be logged in first:", error);
     return NextResponse.json({ error: "Error updating section progress" });
   }
 }

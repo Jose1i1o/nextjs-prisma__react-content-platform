@@ -11,6 +11,7 @@ interface ModuleStore {
   isLoading?: boolean;
   setCurrentModule: (module: any) => void;
   updateCurrentModule: (module: any) => Promise<void>;
+  clearCurrentModule: () => void;
 }
 
 export const useUserStore = create<UserStore>((set, get) => ({
@@ -28,7 +29,6 @@ export const useModuleStore = create<ModuleStore>((set, get) => ({
       try {
         const response = await fetch('/api/modules');
         const newModuleData = await response.json();
-        console.log('moduleData updated', newModuleData);
         
         set({ currentModule: newModuleData });
       } catch (error) {
@@ -37,5 +37,5 @@ export const useModuleStore = create<ModuleStore>((set, get) => ({
         set({ isLoading: false });
       }
   },
-  clearModule: () => set({ currentModule: null })
+  clearCurrentModule: () => set({ currentModule: null })
 }));

@@ -11,7 +11,7 @@ import Modal from "./Modal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import Heading from "../Heading/Heading";
 import Input from "../shared/Inputs/Input";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import Button from "../shared/Button/Button";
 
 import { useRouter } from "next/navigation";

@@ -77,12 +77,12 @@ model Module {
   moduleItem        String       
   title             String         
   completionStatus  String        
-  progress          Int            
+  progress          Int      
   createdAt         DateTime       @default(now())
   updatedAt         DateTime       @updatedAt
   sections          Section[]      
   reviews           Reviews[]
-  userModuleProgress UserModuleProgress[]      
+  userModuleProgress UserModuleProgress[]
 }
 
 model UserSectionProgress {

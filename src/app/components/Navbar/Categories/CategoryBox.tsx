@@ -18,6 +18,8 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 }) => {
 	const router = useRouter();
 	const params = useSearchParams();
+	const iconClass = selected ? "text-rose-600" : "text-neutral-500";
+	const iconHoverClass = "hover:text-rose-600";
 
 	const handleClick = useCallback(() => {
 		let currentQuery = {};
@@ -61,11 +63,12 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
     transition
     cursor-pointer
     ${selected ? "border-rose-600" : "border-transparent"}
-    ${selected ? "text-neutral-950" : "text-neutral-500"}
+    ${selected ? "border-rose-600" : "text-neutral-500"}
+		${iconHoverClass ? iconHoverClass : "hover:text-rose-600"}
   `}
 		>
-			<Icon size={26} className="mx-auto" />
-			<div className="font-medium text-sm mx-auto text-center">{label}</div>
+			<Icon size={26} className={`mx-auto ${iconClass} ${iconHoverClass}`} />
+			<div className={`font-medium text-sm mx-auto text-center ${iconClass} ${iconHoverClass}`}>{label}</div>
 		</div>
 	);
 };

@@ -8,6 +8,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
+import { useModuleStore, useUserStore } from "@/app/context/store";
 
 type ProfileViewProps = {
 	currentUser?: SafeUser | null;
@@ -17,10 +18,18 @@ const ProfileView: FC<ProfileViewProps> = ({ currentUser }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const registerModal = useRegisterModal();
 	const LoginModal = useLoginModal();
+	const { clearCurrentUser } = useUserStore();
+	const { clearCurrentModule } = useModuleStore();
 
 	const toogleOpenMenu = useCallback(() => {
 		setIsOpen((isOpen) => !isOpen);
 	}, []);
+
+	const logout = useCallback(() => {
+		clearCurrentUser();
+		clearCurrentModule();
+		signOut();
+	}, [currentUser]);
 
 	return (
 		<section className="relative">
@@ -46,7 +55,7 @@ const ProfileView: FC<ProfileViewProps> = ({ currentUser }) => {
 								<MenuItem onClick={() => {}} label="My profile" />
 								<MenuItem onClick={() => {}} label="My favourites" />
 								<hr />
-								<MenuItem onClick={() => signOut()} label="Logout" />
+								<MenuItem onClick={() => logout()} label="Logout" />
 							</>
 						) : (
 							<>

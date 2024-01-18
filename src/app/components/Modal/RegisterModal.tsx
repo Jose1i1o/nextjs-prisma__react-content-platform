@@ -10,7 +10,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../Heading/Heading";
 import Input from "../shared/Inputs/Input";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import Button from "../shared/Button/Button";
 import { signIn } from "next-auth/react";
 
