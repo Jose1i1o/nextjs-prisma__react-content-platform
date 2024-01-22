@@ -11,10 +11,10 @@ import { SafeUser } from "@/app/types";
 import { useModuleStore, useUserStore } from "@/app/context/store";
 
 type ProfileViewProps = {
-	currentUser?: SafeUser | null;
+	currentuser?: SafeUser | null;
 };
 
-const ProfileView: FC<ProfileViewProps> = ({ currentUser }) => {
+const ProfileView: FC<ProfileViewProps> = ({ currentuser }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const registerModal = useRegisterModal();
 	const LoginModal = useLoginModal();
@@ -29,7 +29,7 @@ const ProfileView: FC<ProfileViewProps> = ({ currentUser }) => {
 		clearCurrentUser();
 		clearCurrentModule();
 		signOut();
-	}, [currentUser]);
+	}, [currentuser]);
 
 	return (
 		<section className="relative">
@@ -43,14 +43,14 @@ const ProfileView: FC<ProfileViewProps> = ({ currentUser }) => {
 				>
 					<AiOutlineMenu size={20} />
 					<div className="hidden md:block">
-						<Avatar src={currentUser?.image} />
+						<Avatar src={currentuser?.image} />
 					</div>
 				</div>
 			</div>
 			{isOpen && (
 				<div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-10 top-12 text-sm">
 					<div className="flex flex-col cursor-pointer">
-						{currentUser ? (
+						{currentuser ? (
 							<>
 								<MenuItem onClick={() => {}} label="My profile" />
 								<MenuItem onClick={() => {}} label="My favourites" />

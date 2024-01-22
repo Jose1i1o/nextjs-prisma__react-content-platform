@@ -1,14 +1,11 @@
 'use client';
 
 import dynamic from "next/dynamic";
-import { useState, useEffect, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
-
+import { useState, useEffect } from "react";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container/Container";
 import { Sidebar } from "./components/Sidebar";
 import { theme } from "@/theme/theme";
-import { GetStaticProps } from "next";
 import renderComponent from "./utils/renderComponent";
 import { useFetchModules } from "./hooks/useFetchModules";
 import { useCategory } from "./hooks/useCategory";
@@ -30,13 +27,17 @@ const Intro = dynamic(() => import("./components/Pages/Intro/Intro"));
 const Home = () => {
 	const [showSidebar, setShowSidebar] = useState(false);
   const { isLoading, currentModule } = useFetchModules();
+
+	useEffect(() => {
+	}, [currentModule]);
+	
   const category = useCategory(); 
 
 	return (
 		<ClientOnly>
 				<Container>
 						<div style={{ backgroundColor: theme.colors.black }} className="flex flex-col md:flex-row gap-4">
-								{currentModule && <Sidebar show={showSidebar} setter={setShowSidebar} moduleInfo={currentModule} />}
+								{!isLoading && <Sidebar show={showSidebar} setter={setShowSidebar} />}
 								<div className="flex flex-col gap-4 w-full">
 										{isLoading ? <div>Loading...</div> : renderComponent(category, currentModule)}
 								</div>

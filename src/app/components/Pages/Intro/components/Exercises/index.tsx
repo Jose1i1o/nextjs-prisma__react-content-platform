@@ -21,7 +21,7 @@ export const BodySliderExercises = ({ moduleInfo: {id} }: any) => {
   return (
 		<>
     	<WithTests />
-      <SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+      <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
 		</>
   )
 }

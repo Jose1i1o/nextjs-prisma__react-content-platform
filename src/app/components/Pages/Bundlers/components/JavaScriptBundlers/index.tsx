@@ -50,7 +50,7 @@ export const BodyUnderstandingJavaScriptBundlersAndFrameworks = ({ moduleInfo: {
 					it easier to include them in your project.
 				</li>
 			</ul>
-			<SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+			<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
 		</div>
 	
   )

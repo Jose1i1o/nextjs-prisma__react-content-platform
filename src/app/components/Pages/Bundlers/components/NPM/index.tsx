@@ -268,7 +268,7 @@ export const BodySliderNPM = ({ moduleInfo: {id} }: any) => {
 				</p>
 			</AccordionItem>
 		</Accordion>
-    <SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+    <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
 		</>
   )
 }

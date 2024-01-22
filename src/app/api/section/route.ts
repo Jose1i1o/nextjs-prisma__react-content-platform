@@ -6,10 +6,6 @@ export async function PUT(request: Request) {
   
   const { userId, sectionId, completionStatus, sectionPoints, moduleId } = body;
 
-  console.log('userId:', userId);
-  console.log('sectionId:', sectionId);
-  
-
   try {
     const updatedSectionProgress = await prisma.userSectionProgress.upsert({
       where: {

@@ -139,7 +139,6 @@ const Categories = () => {
 	return (
 		<Container>
 			<div
-				key={category}
 				className="
           pt-4
           flex 
@@ -150,14 +149,12 @@ const Categories = () => {
         "
 			>
 				{categories?.map(({ label, icon }) => (
-					<>
 						<CategoryBox
 							key={label}
 							label={label}
 							icon={icon}
 							selected={category === label}
 						/>
-					</>
 				))}
 			</div>
 		</Container>

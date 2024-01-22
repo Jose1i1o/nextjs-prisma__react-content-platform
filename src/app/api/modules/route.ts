@@ -8,9 +8,10 @@ export async function GET(
   res: NextApiResponse
 ) {
   const category = new URL(request.url).searchParams;
+  
   const categoryValue = category?.get('category');
-  const userId = category?.get('userId');
   const defaultUser = '000000000000000000000000';
+  const userId = category?.get('userId') || defaultUser;
   
 
   try {
@@ -36,15 +37,13 @@ export async function GET(
             completionStatus: true
           },
           where: {
-            userId: userId
+            userId: userId || defaultUser
           }
         }
       }
     });
     // If no user is logged in, return module and sections with no user progress
     if (thisModule && userId === defaultUser) {
-      console.log('first conditional');
-      
       // Fetch sections for the retrieved module
       const sections = await prisma.section.findMany({
         where: {

@@ -118,7 +118,7 @@ export const BodySliderWebpack = ({ moduleInfo: {id} }: any) => {
 					.
 				</p>
 			</div>
-			<SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+			<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
 		</>
 	
   )

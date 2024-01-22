@@ -30,7 +30,7 @@ export const BodySliderIntroVideo = ({ moduleInfo: {id} }: any) => {
       allowFullScreen
       style={{ maxWidth: '100%' }}
     ></iframe>
-    <SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+    <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
     </>
   );
 };

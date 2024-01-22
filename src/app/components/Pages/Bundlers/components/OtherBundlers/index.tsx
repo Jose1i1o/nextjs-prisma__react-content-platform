@@ -255,7 +255,7 @@ export const BodySliderOtherBundlers = ({ moduleInfo: {id} }: any) => {
 			  	often given by the framework of our choice. But it is important to
 			  	understand what it is and what it does.
 			  </p>
-				<SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+				<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
 			</div>
     </>
   )

@@ -10,21 +10,21 @@ import Categories from "./Categories/Categories";
 import { useUserStore } from "@/app/context/store";
 
 type NavbarProps = {
-	currentUser?: SafeUser | null;
+	currentuser?: SafeUser | null;
 };
 
-const Navbar: FC<NavbarProps> = ({ currentUser }) => {
+const Navbar: FC<NavbarProps> = ({ currentuser }) => {
 
 	const { setCurrentUser } = useUserStore();
 
 	useEffect(() => {
-		if (currentUser !== undefined || currentUser !== null) {
-			setCurrentUser(currentUser)
+		if (currentuser !== undefined || currentuser !== null) {
+			setCurrentUser(currentuser)
 		}
 		return () => {
 			setCurrentUser(null)
 		}
-	}, [currentUser]);
+	}, [currentuser]);
 
 	return (
 		<nav className="relative w-full h-lvh bg-white z-10 shadow-sm max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-2 px-4">
@@ -33,7 +33,7 @@ const Navbar: FC<NavbarProps> = ({ currentUser }) => {
 					<div className="flex flex-row justify-between items-center gap-3 md:gap-0">
 						<Logo />
 						{/* <Search /> */}
-						<ProfileView currentUser={currentUser} />
+						<ProfileView currentuser={currentuser} />
 					</div>
 				{/* </Container> */}
 			</div>

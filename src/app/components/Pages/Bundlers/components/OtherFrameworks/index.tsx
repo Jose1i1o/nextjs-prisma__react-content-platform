@@ -170,7 +170,7 @@ export const BodySliderOtherFrameworks = ({ moduleInfo: {id} }: any) => {
 						chosen based on the specific requirements of your project.
 					</p>
 				</div>
-				<SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+				<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
 			</div>
 		</>
   )

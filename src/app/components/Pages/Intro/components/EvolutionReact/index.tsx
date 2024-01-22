@@ -100,7 +100,7 @@ export const BodySliderEvolutionReact = ({ moduleInfo: {id} }: any) => {
         application, React's versatility and community support make it an
         excellent choice for your web development journey.
       </p>
-      <SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+      <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
     </div>
   )
 }

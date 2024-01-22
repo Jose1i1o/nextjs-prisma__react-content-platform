@@ -5,9 +5,10 @@ import { FC, use, useCallback, useEffect } from "react";
 import { toast } from "sonner";
 import { useModuleStore } from "@/app/context/store";
 import { completionTypes } from "@/app/types";
+import { useCategory } from "@/app/hooks/useCategory";
 
 interface AccountUser {
-  currentUser: {
+  currentuser: {
     accountPoints: number;
     createdAt: string;
     email: string;
@@ -21,24 +22,20 @@ interface AccountUser {
 }
 
 type Section = {
-  sectionId: string;
+  sectionid: string;
 }
 
-export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, sectionId }) => {
-
-  console.log('currentUser', currentUser);
-  console.log('sectionId', sectionId);
-  
+export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentuser, sectionid }) => {
 
   const { currentModule, updateCurrentModule } = useModuleStore();
+  const category = useCategory();
   
   const updateSection = useCallback(async () => {
-    const userId = currentUser?.id;
-    console.log('userId', userId);
+    const userId = currentuser?.id;
     
     const moduleId = currentModule?.id;
     const completionStatus = completionTypes.completed;
-    const sectionPoints = currentModule?.sections.find((section: any) => section.id === sectionId)?.points;
+    const sectionPoints = currentModule?.sections.find((section: any) => section.id === sectionid)?.points;
 
     try {
       const response = await fetch('/api/section', {
@@ -48,7 +45,7 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, se
         },
         body: JSON.stringify({
           userId,
-          sectionId,
+          sectionid,
           completionStatus,
           sectionPoints,
           moduleId
@@ -64,7 +61,7 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, se
       const { success, error } = data;
       
       if (success && !error) {
-        updateCurrentModule(sectionId);
+        updateCurrentModule(userId, category);
         toast.success('Section completed!');
       } 
       if (error && !success) {
@@ -74,11 +71,11 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, se
       toast.error('Failed to update section progress. Remember you need to be logged in first.');
       console.error('Error updating section', error);
     }
-  }, [sectionId, updateCurrentModule]);
+  }, [sectionid, updateCurrentModule]);
 
   return (
     <Button 
-      outline={true}
+      outline
       label="Complete"
       onClick={updateSection}
       icon={[GrNext, GrNext]}
@@ -91,8 +88,8 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentUser, se
       iconClassName='flex justify-center items-center align-middle'
       tooltip='Next'
       ariaLabel='Next'
-      currentUser={currentUser}
-      sectionId={sectionId}
+      currentuser={currentuser}
+      sectionid={sectionid}
     />
   );
 }

@@ -23,7 +23,7 @@ export const BodySliderPlayground = ({ moduleInfo: {id} }: any) => {
 		<>
     	<WithPlayground />
 			{/* <WithFiles /> */}
-			<SetToCompleteButton currentUser={currentUser} sectionId={sectionId} />
+			<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
 		</>
   )
 }

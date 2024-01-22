@@ -88,7 +88,7 @@ export const BodySliderVite = ({ moduleInfo: {id} }: any) => {
 					</a>
 					.
 				</p>
-				<SetToCompleteButton sectionId={sectionId} currentUser={currentUser} />
+				<SetToCompleteButton sectionid={sectionId} currentuser={currentUser} />
 			</div>
 		</>
   )
