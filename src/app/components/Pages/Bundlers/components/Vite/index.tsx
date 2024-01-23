@@ -4,6 +4,7 @@ import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIco
 import { BsTerminal } from 'react-icons/bs';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 import { useUserStore } from '@/app/context/store';
+import { useCategory } from '@/app/hooks/useCategory';
 
 
 export const HeaderSliderVite: FC<{ blockTitle: string }> = ({ blockTitle }) => {
@@ -16,6 +17,7 @@ export const HeaderSliderVite: FC<{ blockTitle: string }> = ({ blockTitle }) => 
 
 export const BodySliderVite = ({ moduleInfo: {id} }: any) => {
   
+	const category = useCategory();
   const { currentUser } = useUserStore();
   const sectionId = id;
 
@@ -88,7 +90,7 @@ export const BodySliderVite = ({ moduleInfo: {id} }: any) => {
 					</a>
 					.
 				</p>
-				<SetToCompleteButton sectionid={sectionId} currentuser={currentUser} />
+				<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} category={category}/>
 			</div>
 		</>
   )

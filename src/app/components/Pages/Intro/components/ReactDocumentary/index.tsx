@@ -3,6 +3,7 @@ import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import {SetToCompleteButton} from '@/app/components/shared/Button/SetToCompleteButton';
 import { useUserStore } from '@/app/context/store';
+import { useCategory } from '@/app/hooks/useCategory';
 
 export const HeaderSliderReactDocumentary: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
@@ -14,6 +15,7 @@ export const HeaderSliderReactDocumentary: FC<{ blockTitle: string }> = ({ block
 
 export const BodySliderReactDocumentary = ({ moduleInfo: {id} }: any) => {
   
+  const category = useCategory();
   const { currentUser } = useUserStore();
   const sectionId = id;
 
@@ -28,7 +30,7 @@ export const BodySliderReactDocumentary = ({ moduleInfo: {id} }: any) => {
         allowFullScreen
         style={{ maxWidth: '100%' }}
       ></iframe>
-      <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
+      <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} category={category}/>
     </>
   );
 };

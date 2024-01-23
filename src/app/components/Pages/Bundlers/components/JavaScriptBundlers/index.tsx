@@ -3,6 +3,7 @@ import AccordionHeader from '@/app/components/shared/Accordion/AccordionHeader'
 import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIcon';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 import { useUserStore } from '@/app/context/store';
+import { useCategory } from '@/app/hooks/useCategory';
 
 
 export const HeaderUnderstandingJavaScriptBundlersAndFrameworks: FC<{ blockTitle: string }> = ({ blockTitle }) => {
@@ -15,6 +16,7 @@ export const HeaderUnderstandingJavaScriptBundlersAndFrameworks: FC<{ blockTitle
 
 export const BodyUnderstandingJavaScriptBundlersAndFrameworks = ({ moduleInfo: {id} }: any) => {
   
+	const category = useCategory();
   const { currentUser } = useUserStore();
   const sectionId = id;
 
@@ -50,7 +52,7 @@ export const BodyUnderstandingJavaScriptBundlersAndFrameworks = ({ moduleInfo: {
 					it easier to include them in your project.
 				</li>
 			</ul>
-			<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
+			<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} category={category}/>
 		</div>
 	
   )

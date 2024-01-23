@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useModuleStore } from "@/app/context/store";
 import { completionTypes } from "@/app/types";
 import { useCategory } from "@/app/hooks/useCategory";
+import styled from "styled-components";
 
 interface AccountUser {
   currentuser: {
@@ -23,14 +24,19 @@ interface AccountUser {
 
 type Section = {
   sectionid: string;
+  category: string | null | undefined;
 }
 
-export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentuser, sectionid }) => {
+export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentuser, sectionid, category }) => {
 
   const { currentModule, updateCurrentModule } = useModuleStore();
-  const category = useCategory();
   
-  const updateSection = useCallback(async () => {
+  const completionStatus =
+    currentModule?.sections.find((section: any) => section.id === sectionid)?.userProgress[0]?.completionStatus;
+
+    const isButtonDisabled = completionStatus !== undefined;
+    
+    const updateSection = useCallback(async () => {
     const userId = currentuser?.id;
     
     const moduleId = currentModule?.id;
@@ -61,7 +67,7 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentuser, se
       const { success, error } = data;
       
       if (success && !error) {
-        updateCurrentModule(userId, category);
+        updateCurrentModule(userId);
         toast.success('Section completed!');
       } 
       if (error && !success) {
@@ -76,20 +82,24 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentuser, se
   return (
     <Button 
       outline
-      label="Complete"
+      label={completionStatus !== undefined ? 'Section completed' : 'Next'}
       onClick={updateSection}
       icon={[GrNext, GrNext]}
       size='small'
       className="mt-3 w-1/2 mx-auto align-middle"
       buttonType="submit"
-      hoverStyle={{ backgroundColor: theme.colors.accent, color: theme.colors.white }}
-      backgroundColor={theme.colors.primary}
+      hoverStyle={ isButtonDisabled ? { backgroundColor: theme.colors.white, color: theme.colors.accent } : { backgroundColor: theme.colors.accent, color: theme.colors.white } }
+      backgroundColor={isButtonDisabled ? theme.colors.white : theme.colors.primary}
+      color={isButtonDisabled ? theme.colors.accent : theme.colors.accent}
+      cursor={isButtonDisabled ? 'not-allowed' : 'pointer'}
       iconPosition='right'
       iconClassName='flex justify-center items-center align-middle'
       tooltip='Next'
       ariaLabel='Next'
       currentuser={currentuser}
       sectionid={sectionid}
+      category={category}
+      disabled={isButtonDisabled}
     />
   );
 }

@@ -4,14 +4,14 @@ import { NextResponse } from 'next/server';
 export async function PUT(request: Request) {
   const body = await request.json();
   
-  const { userId, sectionId, completionStatus, sectionPoints, moduleId } = body;
+  const { userId, sectionid, completionStatus, sectionPoints, moduleId } = body;
 
   try {
     const updatedSectionProgress = await prisma.userSectionProgress.upsert({
       where: {
         userId_sectionId: {
           userId: userId,
-          sectionId: sectionId
+          sectionId: sectionid
         }
       },
       update: {
@@ -19,7 +19,7 @@ export async function PUT(request: Request) {
       },
       create: {
         userId: userId,
-        sectionId: sectionId,
+        sectionId: sectionid,
         completionStatus: completionStatus
       }
     });

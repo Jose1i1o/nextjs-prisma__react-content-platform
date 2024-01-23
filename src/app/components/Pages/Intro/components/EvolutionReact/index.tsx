@@ -5,6 +5,7 @@ import { StyledFirstLetterInParagraph } from '@/app/components/shared/StyledFirs
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 import Image from "next/legacy/image";
 import { useUserStore } from '@/app/context/store';
+import { useCategory } from '@/app/hooks/useCategory';
 
 export const HeaderSliderEvolutionReact: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
@@ -16,6 +17,7 @@ export const HeaderSliderEvolutionReact: FC<{ blockTitle: string }> = ({ blockTi
 
 export const BodySliderEvolutionReact = ({ moduleInfo: {id} }: any) => {
   
+  const category = useCategory();
   const { currentUser } = useUserStore();
   const sectionId = id;
   
@@ -100,7 +102,7 @@ export const BodySliderEvolutionReact = ({ moduleInfo: {id} }: any) => {
         application, React's versatility and community support make it an
         excellent choice for your web development journey.
       </p>
-      <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
+      <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} category={category}/>
     </div>
   )
 }

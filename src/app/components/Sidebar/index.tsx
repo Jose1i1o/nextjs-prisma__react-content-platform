@@ -46,8 +46,6 @@ export const Sidebar: FC<SidebarProps> = ({ show }) => {
     
     const { currentUser } = useUserStore();
     const { currentModule } = useModuleStore();
-    console.log('currentModule', currentModule?.userModuleProgress[0]?.progress);
-    
        
     useEffect(() => {
     }, [currentModule]);
@@ -56,10 +54,9 @@ export const Sidebar: FC<SidebarProps> = ({ show }) => {
     const userModuleProgress =
     currentUser === null
       ? 0
-        : currentModule?.userModuleProgress[0]?.progress !== undefined
-        ? currentModule.userModuleProgress[0].progress
+      : currentModule?.userModuleProgress?.[0]?.progress !== undefined
+      ? currentModule.userModuleProgress[0].progress
       : 0;
-    console.log('userModuleProgress', userModuleProgress);
     
     
     const sidebarClass = `w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40 h-screen overflow-y-auto ${show ? ' ml-0' : ' ml-[-250px] md:ml-0'}`;

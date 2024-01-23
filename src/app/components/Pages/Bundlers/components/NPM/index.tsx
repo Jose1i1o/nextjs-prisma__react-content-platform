@@ -16,6 +16,7 @@ export const HeaderSliderNPM: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 
 export const BodySliderNPM = ({ moduleInfo: {id} }: any) => {
   
+	const category = useCategory();
   const { currentUser } = useUserStore();
   const sectionId = id;
 
@@ -268,7 +269,7 @@ export const BodySliderNPM = ({ moduleInfo: {id} }: any) => {
 				</p>
 			</AccordionItem>
 		</Accordion>
-    <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
+    <SetToCompleteButton currentuser={currentUser} sectionid={sectionId} category={category}/>
 		</>
   )
 }

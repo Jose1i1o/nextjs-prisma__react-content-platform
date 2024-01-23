@@ -5,6 +5,7 @@ import { BsTerminal } from 'react-icons/bs';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 import { useUserStore } from '@/app/context/store';
 import Image from "next/legacy/image";
+import { useCategory } from '@/app/hooks/useCategory';
 
 export const HeaderSliderWebpack: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
@@ -16,6 +17,7 @@ export const HeaderSliderWebpack: FC<{ blockTitle: string }> = ({ blockTitle }) 
 
 export const BodySliderWebpack = ({ moduleInfo: {id} }: any) => {
   
+	const category = useCategory();
   const { currentUser } = useUserStore();
   const sectionId = id;
 	
@@ -118,8 +120,7 @@ export const BodySliderWebpack = ({ moduleInfo: {id} }: any) => {
 					.
 				</p>
 			</div>
-			<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
+			<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} category={category}/>
 		</>
-	
   )
 }

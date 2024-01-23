@@ -3,10 +3,12 @@ import { useCategory } from "./useCategory";
 import { useUserStore, useModuleStore } from "../context/store";
 import ObjectId from "bson-objectid";
 
-export const useFetchModules = () => {
-  const { currentModule, setCurrentModule, updateCurrentModule } = useModuleStore();
+export const useFetchModules = () => {  
+  const { currentModule, setCurrentModule } = useModuleStore();
   const { currentUser } = useUserStore();
   const category = useCategory();
+  console.log("useFetchModules: category", category);
+  
 
   const defaultUserIdHex = '000000000000000000000000';
   const defaultUserId = new ObjectId(defaultUserIdHex);
@@ -40,13 +42,11 @@ export const useFetchModules = () => {
     } finally {
       setIsLoading(false);
     }
-  // }, [category, userId, setCurrentModule]);
   }, [category]);
 
 
   useEffect(() => {
     fetchModules();
-  // }, [fetchModules, category]);
   }, [fetchModules]);
 
   return { isLoading, currentModule };

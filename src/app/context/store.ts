@@ -1,6 +1,4 @@
 import { create } from 'zustand';
-import { useCategory } from '../hooks/useCategory';
-import ObjectId from "bson-objectid";
 
 interface UserStore {
   currentUser: any;
@@ -12,7 +10,7 @@ interface ModuleStore {
   currentModule: any;
   isLoading?: boolean;
   setCurrentModule: (module: any) => void;
-  updateCurrentModule: (category: string | null, userId: string | null | undefined) => void;
+  updateCurrentModule: (userId: string | null | undefined) => void;
   clearCurrentModule: () => void;
 }
 
@@ -26,17 +24,16 @@ export const useModuleStore = create<ModuleStore>((set, get) => ({
   currentModule: null,
   isLoading: false,
   setCurrentModule: (module: any) => set({ currentModule: module }),
-  updateCurrentModule: async (category, userId ) => {
+  updateCurrentModule: async (userId ) => {
       set({ isLoading: true });
       try {
-        const response = await fetch(`/api/modules?category=${category}&userId=${userId}`, {
+        const response = await fetch(`/api/modules?userId=${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
           },
         });
         const newModuleData = await response.json();
-        
         set({ currentModule: newModuleData });
       } catch (error) {
         console.error(error);

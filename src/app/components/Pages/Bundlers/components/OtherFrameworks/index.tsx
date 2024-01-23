@@ -4,6 +4,7 @@ import { displayCorrectIcon } from '@/app/components/shared/Accordion/DisplayIco
 import { BsTerminal } from 'react-icons/bs';
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 import { useUserStore } from '@/app/context/store';
+import { useCategory } from '@/app/hooks/useCategory';
 
 export const HeaderSliderOtherFrameworks: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
@@ -15,6 +16,7 @@ export const HeaderSliderOtherFrameworks: FC<{ blockTitle: string }> = ({ blockT
 
 export const BodySliderOtherFrameworks = ({ moduleInfo: {id} }: any) => {
   
+	const category = useCategory();
   const { currentUser } = useUserStore();
   const sectionId = id;
 	
@@ -170,7 +172,7 @@ export const BodySliderOtherFrameworks = ({ moduleInfo: {id} }: any) => {
 						chosen based on the specific requirements of your project.
 					</p>
 				</div>
-				<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
+				<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} category={category}/>
 			</div>
 		</>
   )

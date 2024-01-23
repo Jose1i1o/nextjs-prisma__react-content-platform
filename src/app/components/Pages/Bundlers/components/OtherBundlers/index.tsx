@@ -6,6 +6,7 @@ import { Accordion, AccordionItem } from '@nextui-org/react';
 
 import { SetToCompleteButton } from '@/app/components/shared/Button/SetToCompleteButton';
 import { useUserStore } from '@/app/context/store';
+import { useCategory } from '@/app/hooks/useCategory';
 
 export const HeaderSliderOtherBundlers: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
@@ -17,6 +18,7 @@ export const HeaderSliderOtherBundlers: FC<{ blockTitle: string }> = ({ blockTit
 
 export const BodySliderOtherBundlers = ({ moduleInfo: {id} }: any) => {
   
+	const category = useCategory();
   const { currentUser } = useUserStore();
   const sectionId = id;
 	
@@ -255,7 +257,7 @@ export const BodySliderOtherBundlers = ({ moduleInfo: {id} }: any) => {
 			  	often given by the framework of our choice. But it is important to
 			  	understand what it is and what it does.
 			  </p>
-				<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} />
+				<SetToCompleteButton currentuser={currentUser} sectionid={sectionId} category={category}/>
 			</div>
     </>
   )

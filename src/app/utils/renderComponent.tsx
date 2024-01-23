@@ -14,13 +14,10 @@ const renderComponent = (category: any, moduleInfo: any) => {
   switch (category) {
     case "Bundlers":
       return moduleInfo ? <Bundlers moduleInfo={moduleInfo} /> : null;
-      break;
     case "Intro":
       return moduleInfo ? <Intro moduleInfo={moduleInfo} /> : null;
-      break;
     default:
       return <EmptyState showReset />;
-      break;
   }
 };
 
