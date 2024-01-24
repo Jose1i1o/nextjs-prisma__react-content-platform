@@ -1,0 +1,30 @@
+.section-container {
+  margin: 15px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-content {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust gap as needed */
+}
+.section-icon {
+  flex-shrink: 0;
+}
+.section-title {
+  flex-grow: 1;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Prevents text from breaking the layout */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 12px; /* Smaller font size for smaller screens */
+  }
+  .section-content {
+    gap: 5px; /* Smaller gap */
+  }
+}

@@ -7,6 +7,7 @@ import { FaCircle } from "react-icons/fa";
 import { theme } from '@/theme/theme';
 import Xarrow from "react-xarrows";
 import { useModuleStore, useUserStore } from '@/app/context/store';
+import './main.css';
 
 import {
     MenuContainer,
@@ -93,14 +94,14 @@ export const Sidebar: FC<SidebarProps> = ({ show }) => {
         return (
             <div style={{ margin: '10px' }}>
                 {section && (
-                    <div style={{ margin: '15px 5px', display: 'flex', justifyContent: 'space-between', height: '50px' }}>
-                        <div className={`flex gap-1 text-md pl-3 py-1 text-gray-100`} id={section?.id}>
+                    <div className="section-container" style={{ margin: '15px 5px', display: 'flex', justifyContent: 'space-between', height: '20px' }}>
+                        <div className="section-content flex gap-1 text-md pl-3 py-1 text-gray-100" id={section?.id}>
                         {currentIndex > 0 && (
                             <Xarrow
                                 start={sections[currentIndex - 1]?.id}
                                 end={sections[currentIndex]?.id}
-                                startAnchor={{ position: "left", offset: { x: 20, y: 15 } }}
-                                endAnchor={{ position: "left", offset: { x: 20, y: -30 } }}
+                                startAnchor={{ position: "left", offset: { x: 20, y: 20 } }}
+                                endAnchor={{ position: "left", offset: { x: 20, y: -20 } }}
                                 strokeWidth={1}
                                 lineColor={theme.colors.grey}
                                 headSize={0}
@@ -112,10 +113,10 @@ export const Sidebar: FC<SidebarProps> = ({ show }) => {
                                 _extendSVGcanvas={1000}
                             />
                         )}
-                            <div className="text-xl flex w-[30px]">
+                            <div className="section-icon text-xl flex w-[30px]">
                                 {nextIcon}
                             </div>
-                            <div className="flex pl-3">{section?.title}</div>
+                            <div className="section-title flex pl-3">{section?.title}</div>
                         </div>
                     </div>
                 )}
