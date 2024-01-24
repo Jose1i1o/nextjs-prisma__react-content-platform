@@ -6,9 +6,7 @@ import ObjectId from "bson-objectid";
 export const useFetchModules = () => {  
   const { currentModule, setCurrentModule } = useModuleStore();
   const { currentUser } = useUserStore();
-  const category = useCategory();
-  console.log("useFetchModules: category", category);
-  
+  const category = useCategory();  
 
   const defaultUserIdHex = '000000000000000000000000';
   const defaultUserId = new ObjectId(defaultUserIdHex);

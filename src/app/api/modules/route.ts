@@ -10,7 +10,6 @@ export async function GET(
   const category = new URL(request.url).searchParams;
   
   const categoryValue = category?.get('category');
-  console.log('categoryValue', categoryValue);
   
   const defaultUser = '000000000000000000000000';
   const userId = category?.get('userId') || defaultUser;  

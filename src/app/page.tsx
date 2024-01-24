@@ -31,13 +31,13 @@ const Home = () => {
 	useEffect(() => {
 	}, [currentModule]);
 	
-  const category = useCategory(); 
+  const category = useCategory();
 
 	return (
 		<ClientOnly>
 				<Container>
 						<div style={{ backgroundColor: theme.colors.black }} className="flex flex-col md:flex-row gap-4">
-								{!isLoading && <Sidebar show={showSidebar} setter={setShowSidebar} />}
+								{!isLoading && category !== null && <Sidebar show={showSidebar} setter={setShowSidebar} />}
 								<div className="flex flex-col gap-4 w-full">
 										{isLoading ? <div>Loading...</div> : renderComponent(category, currentModule)}
 								</div>

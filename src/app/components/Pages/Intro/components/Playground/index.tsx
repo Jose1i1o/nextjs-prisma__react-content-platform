@@ -10,7 +10,7 @@ import { useCategory } from '@/app/hooks/useCategory';
 export const HeaderSliderPlayground: FC<{ blockTitle: string }> = ({ blockTitle }) => {
 	return (
 		<AccordionHeader>
-			{blockTitle && displayCorrectIcon("docs", blockTitle)}
+			{blockTitle && displayCorrectIcon("code", blockTitle)}
 		</AccordionHeader>
 	)
 }

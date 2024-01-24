@@ -4,6 +4,10 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient();
 
+type PointsPerModule = {
+  [key: string]: number[];
+};
+
 async function main() {
 
   await prisma.account.deleteMany();
@@ -16,15 +20,33 @@ async function main() {
   await prisma.user.deleteMany();
 
   const totalModulePoints = 100;
-  const sectionCountPerModule = {
+  
+  //! Add the new sections here
+  const totalSectionsPerModule = {
     "Bundlers": 7,
     "Intro": 4,
   };
 
-  const pointsAllocatedPerSection = {
-    "Bundlers": totalModulePoints / sectionCountPerModule["Bundlers"],
-    "Intro": totalModulePoints / sectionCountPerModule["Intro"],
-  };
+  //? Important: This function ensures that the points are distributed evenly across all sections in a module and sums up to 100 even if the sections are using Math.round() and the Integer division is not exact as per the schema in the database. If I changed the Int to Float in the schema, it would still round up the numbers and not sum up to 100.
+  let pointsAllocatedPerModule: PointsPerModule = {};
+
+  for (let module in totalSectionsPerModule) {
+    let sections = totalSectionsPerModule[module as keyof typeof totalSectionsPerModule];
+    let totalPoints = 0;
+
+    pointsAllocatedPerModule[module] = [];
+
+    for (let i = 0; i < sections; i++) {
+      if (i < sections - 1) {
+        let points = Math.round(totalModulePoints / sections);
+        pointsAllocatedPerModule[module].push(points);
+        totalPoints += points;
+      } else {
+        let lastSectionPoints = totalModulePoints - totalPoints;
+        pointsAllocatedPerModule[module].push(lastSectionPoints);
+      }
+    }
+  }
 
   const modules = [
     {
@@ -39,47 +61,42 @@ async function main() {
           {
               title: "Introduction Video",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "JavaScript Bundlers",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "Webpack",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "Vite",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "Other Bundlers",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "Other Frameworks",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Bundlers,
               userProgress: []
           },
           {
               title: "NPM and others",
-              completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Bundlers,
-              userProgress: []
+              completionStatus: completionTypes.notCompleted,              userProgress: []
           }
-      ]
-    },
+      ].map((section, index) => ({
+          ...section,
+          points: pointsAllocatedPerModule["Bundlers"][index]
+        })),
+      },
     {
       moduleTitle: "Intro",
       moduleItem: "module 1",
@@ -92,29 +109,28 @@ async function main() {
           {
               title: "React. The Film",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Intro,
               userProgress: []
           },
           {
               title: "The Evolution of React.js",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Intro,
               userProgress: []
           },
           {
               title: "Playground: Testing your React skills",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Intro,
               userProgress: []
           },
           {
               title: "Introduction Test Exercises",
               completionStatus: completionTypes.notCompleted,
-              points: pointsAllocatedPerSection.Intro,
               userProgress: []
           }
-      ]
-    },
+        ].map((section, index) => ({
+          ...section,
+          points: pointsAllocatedPerModule["Intro"][index]
+        })),
+      },
   ];
 
 

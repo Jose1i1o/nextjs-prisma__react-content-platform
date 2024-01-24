@@ -30,18 +30,23 @@ type Section = {
 export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentuser, sectionid, category }) => {
 
   const { currentModule, updateCurrentModule } = useModuleStore();
+  // console.log('currentModule', currentModule);
   
-  const completionStatus =
-    currentModule?.sections.find((section: any) => section.id === sectionid)?.userProgress[0]?.completionStatus;
-
-    const isButtonDisabled = completionStatus !== undefined;
+  const isLoggedIn = currentuser?.id;
+  
+  const section = currentModule?.sections.find((section: any) => section.id === sectionid);
+  const userProgressExists = section?.userProgress && section.userProgress.length > 0;
+  const completionStatus = userProgressExists ? section.userProgress[0].completionStatus : 'notCompleted';
+  
+  // This checks if the user is logged in and if the section is completed. The result will be true if the user is logged in and the section is completed or false if the user is not logged in or the section is not completed.
+  const isButtonDisabled = completionStatus !== 'notCompleted' || !isLoggedIn;
     
-    const updateSection = useCallback(async () => {
-    const userId = currentuser?.id;
-    
-    const moduleId = currentModule?.id;
-    const completionStatus = completionTypes.completed;
-    const sectionPoints = currentModule?.sections.find((section: any) => section.id === sectionid)?.points;
+  const updateSection = useCallback(async () => {
+  const userId = currentuser?.id;
+  
+  const moduleId = currentModule?.id;
+  const completionStatus = completionTypes.completed;
+  const sectionPoints = currentModule?.sections.find((section: any) => section.id === sectionid)?.points;
 
     try {
       const response = await fetch('/api/section', {
@@ -82,7 +87,11 @@ export const SetToCompleteButton: FC<AccountUser & Section> = ({ currentuser, se
   return (
     <Button 
       outline
-      label={completionStatus !== undefined ? 'Section completed' : 'Next'}
+      label={isButtonDisabled && !isLoggedIn 
+        ? 'Log in to continue' 
+          : (completionStatus !== 'notCompleted' 
+          ? 'Section completed'
+        : 'Next')}
       onClick={updateSection}
       icon={[GrNext, GrNext]}
       size='small'
